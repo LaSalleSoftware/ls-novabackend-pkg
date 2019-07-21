@@ -1,0 +1,59 @@
+{
+  "name": "lasallesoftware/lsv2-novabackend-pkg",
+  "description": "LaSalle Software v2 Nova Back-end Package.",
+  "keywords": [
+    "lasalle software",
+    "south lasalle",
+    "bob bloom",
+    "package",
+    "laravel",
+    "nova"
+  ],
+  "homepage": "https://lasallesoftware.ca",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bob Bloom",
+      "email": "bob.bloom@lasallesoftware.ca",
+      "homepage": "https://LasalleSoftware.ca",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^7.1.3",
+    "fideloper/proxy": "^4.0"
+  },
+  "require-dev": {
+    "barryvdh/laravel-ide-helper": "^2.3",
+    "barryvdh/laravel-debugbar": "^3.1",
+  },
+  "autoload": {
+    "psr-4": {
+      "Lasallesoftware\\Novabackend\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Lasallesoftware\\Novabackend\\Test\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Lasallesoftware\\Novabackend\\NovabackendServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "suggest": {
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
