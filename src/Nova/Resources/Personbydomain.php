@@ -35,7 +35,7 @@
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
-use Lasallesoftware\Library\Nova\Resources\BaseResource;
+use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsTo;
@@ -55,7 +55,7 @@ use Illuminate\Http\Request;
 /**
  * Class Personbydomain
  *
- * @package Lasallesoftware\Library\Nova\Resources\BaseResource
+ * @package Lasallesoftware\Novabackend\Nova\Resources\BaseResource
  */
 class Personbydomain extends BaseResource
 {

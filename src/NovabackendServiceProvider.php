@@ -45,7 +45,7 @@ use Laravel\Nova\Nova;
 /**
  * Class NovabackendServiceProvider
  *
- * @package Lasallesoftware\Library
+ * @package Lasallesoftware\Novabackend
  */
 class NovabackendServiceProvider extends ServiceProvider
 {

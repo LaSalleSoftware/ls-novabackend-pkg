@@ -45,7 +45,7 @@ use Laravel\Nova\Fields\Field;
  * my custom text fields, my custom datetime fields, etc. These base fields for my custom text fields (etc)
  * extend this class, so ultimately all my custom fields do extend Laravel\Nova\Fields\Field.
  *
- * @package Lasallesoftware\Library\Nova\Fields
+ * @package Lasallesoftware\Novabackend\Nova\Fields
  */
 class BaseField extends Field
 {

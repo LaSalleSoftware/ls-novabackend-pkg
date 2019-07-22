@@ -35,7 +35,7 @@
 namespace Lasallesoftware\Novabackend\Nova\Fields;
 
 // LaSalle Software class
-use Lasallesoftware\Library\Nova\Fields\BaseTextField;
+use Lasallesoftware\Novabackend\Nova\Fields\BaseTextField;
 
 // Laravel facades
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +48,7 @@ use Illuminate\Support\Facades\DB;
  * Although the actual updated_by field is of type number (the mysql field type is INT), Nova offers features specific
  * to the text type, that are not available with the number field type. So, I am using the text field type.
  *
- * @package Lasallesoftware\Library\Nova\Fields
+ * @package Lasallesoftware\Novabackend\Nova\Fields
  */
 class UpdatedBy extends BaseTextField
 {
@@ -103,7 +103,7 @@ class UpdatedBy extends BaseTextField
      * Format this field for the individual forms,
      *
      * @param string  $formType  The form being displayed.
-     *                           From Lasallesoftware\Library\Nova\Fields->identifyForm()
+     *                           From Lasallesoftware\Novabackend\Nova\Fields->identifyForm()
      * @return \Closure
      */
     private function formatTheValueForTheFormWeAreOn($formType)

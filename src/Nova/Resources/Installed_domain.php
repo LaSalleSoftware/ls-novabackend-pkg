@@ -36,10 +36,10 @@ namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
 use Lasallesoftware\Library\Authentication\Models\Personbydomain;
-use Lasallesoftware\Library\Nova\Resources\BaseResource;
-use Lasallesoftware\Library\Nova\Fields\LookupTitle;
-use Lasallesoftware\Library\Nova\Fields\LookupDescription;
-use Lasallesoftware\Library\Nova\Fields\LookupEnabled;
+use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
+use Lasallesoftware\Novabackend\Nova\Fields\LookupTitle;
+use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
+use Lasallesoftware\Novabackend\Nova\Fields\LookupEnabled;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsTo;
@@ -59,7 +59,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * Class Installed_domain
  *
- * @package Lasallesoftware\Library\Nova\Resources\BaseResource
+ * @package Lasallesoftware\Novabackend\Nova\Resources\BaseResource
  */
 class Installed_domain extends BaseResource
 {

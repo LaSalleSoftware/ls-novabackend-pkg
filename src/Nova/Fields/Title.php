@@ -39,7 +39,7 @@ namespace Lasallesoftware\Novabackend\Nova\Fields;
  *
  * Designed specifically for use with lookup tables
  *
- * @package Lasallesoftware\Library\Nova\Fields
+ * @package Lasallesoftware\Novabackend\Nova\Fields
  */
 class Title extends BaseTextField
 {

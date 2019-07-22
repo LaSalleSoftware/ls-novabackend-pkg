@@ -37,11 +37,11 @@ namespace Lasallesoftware\Novabackend\Nova\Resources;
 // LaSalle Software classes
 use Laravel\Nova\Fields\Text;
 use Lasallesoftware\Library\Authentication\Models\Personbydomain;
-use Lasallesoftware\Library\Nova\Fields\BaseTextField;
-use Lasallesoftware\Library\Nova\Fields\Comments;
-use Lasallesoftware\Library\Nova\Fields\LookupDescription;
-use Lasallesoftware\Library\Nova\Fields\Uuid;
-use Lasallesoftware\Library\Nova\Resources\BaseResource;
+use Lasallesoftware\Novabackend\Nova\Fields\BaseTextField;
+use Lasallesoftware\Novabackend\Nova\Fields\Comments;
+use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
+use Lasallesoftware\Novabackend\Nova\Fields\Uuid;
+use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 use Lasallesoftware\Library\Rules\TelephonesUniqueRule;
 
 // Laravel Nova classes
@@ -62,7 +62,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * Class Telephone
  *
- * @package Lasallesoftware\Library\Nova\Resources\BaseResource
+ * @package Lasallesoftware\Novabackend\Nova\Resources\BaseResource
  */
 class Telephone extends BaseResource
 {
@@ -187,7 +187,7 @@ class Telephone extends BaseResource
             Heading::make( __('lasallesoftwarelibrary::general.field_heading_telephone_type'))
                 ->hideFromDetail(),
 
-            BelongsTo::make('Telephone Type', 'lookup_telephone_type', 'Lasallesoftware\Library\Nova\Resources\Lookup_telephone_type')
+            BelongsTo::make('Telephone Type', 'lookup_telephone_type', 'Lasallesoftware\Novabackend\Nova\Resources\Lookup_telephone_type')
                 ->help('<ul>
                            <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
                      </ul>'

@@ -35,19 +35,19 @@
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
-use Lasallesoftware\Library\Nova\Fields\CreatedAt;
-use Lasallesoftware\Library\Nova\Fields\CreatedBy;
-use Lasallesoftware\Library\Nova\Fields\UpdatedAt;
-use Lasallesoftware\Library\Nova\Fields\UpdatedBy;
+use Lasallesoftware\Novabackend\Nova\Fields\CreatedAt;
+use Lasallesoftware\Novabackend\Nova\Fields\CreatedBy;
+use Lasallesoftware\Novabackend\Nova\Fields\UpdatedAt;
+use Lasallesoftware\Novabackend\Nova\Fields\UpdatedBy;
 
 // Laravel Nova class moved to the LaSalle Software library
-use Lasallesoftware\Library\Nova\Resources\NovaBaseResource;
+use Lasallesoftware\Novabackend\Nova\Resources\NovaBaseResource;
 
 
 /**
  * Class BaseResource
  *
- * @package Lasallesoftware\Library\Nova\Resources\BaseResource
+ * @package Lasallesoftware\Novabackend\Nova\Resources\BaseResource
  */
 abstract class BaseResource extends NovaBaseResource
 {

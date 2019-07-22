@@ -35,7 +35,7 @@
 namespace Lasallesoftware\Novabackend\Nova\Fields;
 
 // LaSalle Software class
-use Lasallesoftware\Library\Nova\Fields\BaseField;
+use Lasallesoftware\Novabackend\Nova\Fields\BaseField;
 
 use Exception;
 use DateTimeInterface;
@@ -45,7 +45,7 @@ use DateTimeInterface;
  *
  * The Nova Date class with customizations for display formats
  *
- * @package Lasallesoftware\Library\Nova\Fields
+ * @package Lasallesoftware\Novabackend\Nova\Fields
  */
 class CustomDate extends BaseField
 {
@@ -123,7 +123,7 @@ class CustomDate extends BaseField
      * Format this field for the individual forms,
      *
      * @param string  $formType  The form being displayed.
-     *                           From Lasallesoftware\Library\Nova\Fields->identifyForm()
+     *                           From Lasallesoftware\Novabackend\Nova\Fields->identifyForm()
      * @return \Closure
      */
     private function formatTheValueForTheFormWeAreOn($formType)

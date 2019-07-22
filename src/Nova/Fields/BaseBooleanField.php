@@ -39,12 +39,12 @@ use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 // LaSalle Software class
-use Lasallesoftware\Library\Nova\Fields\BaseField;
+use Lasallesoftware\Novabackend\Nova\Fields\BaseField;
 
 /**
  * Class BaseBooleanField
  *
- * @package Lasallesoftware\Library\Nova\Fields
+ * @package Lasallesoftware\Novabackend\Nova\Fields
  */
 class BaseBooleanField extends BaseField
 {

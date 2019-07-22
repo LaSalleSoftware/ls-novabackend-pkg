@@ -36,11 +36,11 @@ namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
 use Lasallesoftware\Library\Authentication\Models\Personbydomain;
-use Lasallesoftware\Library\Nova\Fields\CommentsEncrypted;
-use Lasallesoftware\Library\Nova\Fields\Website as CustomWebsite;
-use Lasallesoftware\Library\Nova\Fields\LookupDescription;
-use Lasallesoftware\Library\Nova\Fields\Uuid;
-use Lasallesoftware\Library\Nova\Resources\BaseResource;
+use Lasallesoftware\Novabackend\Nova\Fields\CommentsEncrypted;
+use Lasallesoftware\Novabackend\Nova\Fields\Website as CustomWebsite;
+use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
+use Lasallesoftware\Novabackend\Nova\Fields\Uuid;
+use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsTo;
@@ -60,7 +60,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * Class Website
  *
- * @package Lasallesoftware\Library\Nova\Resources\BaseResource
+ * @package Lasallesoftware\Novabackend\Nova\Resources\BaseResource
  */
 class Website extends BaseResource
 {
@@ -149,7 +149,7 @@ class Website extends BaseResource
             Heading::make( __('lasallesoftwarelibrary::general.field_heading_website_type'))
                 ->hideFromDetail(),
 
-            BelongsTo::make('Website Type', 'lookup_website_type', 'Lasallesoftware\Library\Nova\Resources\Lookup_website_type')
+            BelongsTo::make('Website Type', 'lookup_website_type', 'Lasallesoftware\Novabackend\Nova\Resources\Lookup_website_type')
                 ->help('<ul>
                            <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
                      </ul>'

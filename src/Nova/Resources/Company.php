@@ -36,11 +36,11 @@ namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
 use Lasallesoftware\Library\Authentication\Models\Personbydomain;
-use Lasallesoftware\Library\Nova\Fields\Comments;
-use Lasallesoftware\Library\Nova\Fields\LookupDescription;
-use Lasallesoftware\Library\Nova\Fields\BaseTextField as Text;
-use Lasallesoftware\Library\Nova\Fields\Uuid;
-use Lasallesoftware\Library\Nova\Resources\BaseResource;
+use Lasallesoftware\Novabackend\Nova\Fields\Comments;
+use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
+use Lasallesoftware\Novabackend\Nova\Fields\BaseTextField as Text;
+use Lasallesoftware\Novabackend\Nova\Fields\Uuid;
+use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsToMany;
@@ -59,7 +59,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * Class Company
  *
- * @package Lasallesoftware\Library\Nova\Resources\BaseResource
+ * @package Lasallesoftware\Novabackend\Nova\Resources\BaseResource
  */
 class Company extends BaseResource
 {

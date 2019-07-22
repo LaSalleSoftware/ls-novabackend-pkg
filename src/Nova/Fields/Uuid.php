@@ -41,7 +41,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * Class Uuid
  *
- * @package Lasallesoftware\Library\Nova\Fields
+ * @package Lasallesoftware\Novabackend\Nova\Fields
  */
 class Uuid extends BaseTextField
 {
@@ -84,7 +84,7 @@ class Uuid extends BaseTextField
      * Format this field for the individual forms,
      *
      * @param string  $formType  The form being displayed.
-     *                           From Lasallesoftware\Library\Nova\Fields->identifyForm()
+     *                           From Lasallesoftware\Novabackend\Nova\Fields->identifyForm()
      * @param string  $uuid
      * @return \Closure
      */

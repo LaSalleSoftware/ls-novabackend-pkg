@@ -42,7 +42,7 @@ use Lasallesoftware\Library\Rules\ValueMustBeUnique;
  *
  * Designed specifically for use with lookup tables
  *
- * @package Lasallesoftware\Library\Nova\Fields
+ * @package Lasallesoftware\Novabackend\Nova\Fields
  */
 class LookupTitle extends BaseTextField
 {

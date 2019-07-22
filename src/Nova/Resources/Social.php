@@ -36,11 +36,11 @@ namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
 use Lasallesoftware\Library\Authentication\Models\Personbydomain;
-use Lasallesoftware\Library\Nova\Fields\Comments;
-use Lasallesoftware\Library\Nova\Fields\Social as CustomSocial;
-use Lasallesoftware\Library\Nova\Fields\LookupDescription;
-use Lasallesoftware\Library\Nova\Fields\Uuid;
-use Lasallesoftware\Library\Nova\Resources\BaseResource;
+use Lasallesoftware\Novabackend\Nova\Fields\Comments;
+use Lasallesoftware\Novabackend\Nova\Fields\Social as CustomSocial;
+use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
+use Lasallesoftware\Novabackend\Nova\Fields\Uuid;
+use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsTo;
@@ -60,7 +60,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * Class Social
  *
- * @package Lasallesoftware\Library\Nova\Resources\BaseResource
+ * @package Lasallesoftware\Novabackend\Nova\Resources\BaseResource
  */
 class Social extends BaseResource
 {
@@ -149,7 +149,7 @@ class Social extends BaseResource
             Heading::make( __('lasallesoftwarelibrary::general.field_heading_social_type'))
                 ->hideFromDetail(),
 
-            BelongsTo::make('Social Type', 'lookup_social_type', 'Lasallesoftware\Library\Nova\Resources\Lookup_social_type')
+            BelongsTo::make('Social Type', 'lookup_social_type', 'Lasallesoftware\Novabackend\Nova\Resources\Lookup_social_type')
                 ->help('<ul>
                            <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
                      </ul>'

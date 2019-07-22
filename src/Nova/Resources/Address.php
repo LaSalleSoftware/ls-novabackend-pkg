@@ -36,11 +36,11 @@ namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
 use Lasallesoftware\Library\Authentication\Models\Personbydomain;
-use Lasallesoftware\Library\Nova\Fields\AddressMaplink;
-use Lasallesoftware\Library\Nova\Fields\Comments;
-use Lasallesoftware\Library\Nova\Fields\LookupDescription;
-use Lasallesoftware\Library\Nova\Fields\Uuid;
-use Lasallesoftware\Library\Nova\Resources\BaseResource;
+use Lasallesoftware\Novabackend\Nova\Fields\AddressMaplink;
+use Lasallesoftware\Novabackend\Nova\Fields\Comments;
+use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
+use Lasallesoftware\Novabackend\Nova\Fields\Uuid;
+use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 use Lasallesoftware\Library\Rules\AddressesUniqueRule;
 
 // Laravel Nova classes
@@ -65,7 +65,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * Class Address
  *
- * @package Lasallesoftware\Library\Nova\Resources\BaseResource
+ * @package Lasallesoftware\Novabackend\Nova\Resources\BaseResource
  */
 class Address extends BaseResource
 {
@@ -253,7 +253,7 @@ class Address extends BaseResource
             Heading::make( __('lasallesoftwarelibrary::general.field_heading_address_type'))
                 ->hideFromDetail(),
 
-            BelongsTo::make('Address Type', 'lookup_address_type', 'Lasallesoftware\Library\Nova\Resources\Lookup_address_type')
+            BelongsTo::make('Address Type', 'lookup_address_type', 'Lasallesoftware\Novabackend\Nova\Resources\Lookup_address_type')
                 ->help('<ul>
                            <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
                      </ul>'

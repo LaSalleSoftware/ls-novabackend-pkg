@@ -36,11 +36,11 @@ namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
 use Lasallesoftware\Library\Authentication\Models\Personbydomain;
-use Lasallesoftware\Library\Nova\Fields\Comments;
-use Lasallesoftware\Library\Nova\Fields\Email as CustomEmail;
-use Lasallesoftware\Library\Nova\Fields\LookupDescription;
-use Lasallesoftware\Library\Nova\Fields\Uuid;
-use Lasallesoftware\Library\Nova\Resources\BaseResource;
+use Lasallesoftware\Novabackend\Nova\Fields\Comments;
+use Lasallesoftware\Novabackend\Nova\Fields\Email as CustomEmail;
+use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
+use Lasallesoftware\Novabackend\Nova\Fields\Uuid;
+use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsTo;
@@ -60,7 +60,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * Class Email
  *
- * @package Lasallesoftware\Library\Nova\Resources\BaseResource
+ * @package Lasallesoftware\Novabackend\Nova\Resources\BaseResource
  */
 class Email extends BaseResource
 {
@@ -149,7 +149,7 @@ class Email extends BaseResource
             Heading::make( __('lasallesoftwarelibrary::general.field_heading_email_type'))
                 ->hideFromDetail(),
 
-            BelongsTo::make('Email Type', 'lookup_email_type', 'Lasallesoftware\Library\Nova\Resources\Lookup_email_type')
+            BelongsTo::make('Email Type', 'lookup_email_type', 'Lasallesoftware\Novabackend\Nova\Resources\Lookup_email_type')
                 ->help('<ul>
                            <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
                      </ul>'

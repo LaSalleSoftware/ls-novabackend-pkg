@@ -38,7 +38,7 @@ namespace Lasallesoftware\Novabackend\Nova\Fields;
 /**
  * Class Email
  *
- * @package Lasallesoftware\Library\Nova\Fields
+ * @package Lasallesoftware\Novabackend\Nova\Fields
  */
 class Email extends BaseTextField
 {
@@ -94,7 +94,7 @@ class Email extends BaseTextField
      * Format this field for the individual forms,
      *
      * @param string  $formType  The form being displayed.
-     *                           From Lasallesoftware\Library\Nova\Fields->identifyForm()
+     *                           From Lasallesoftware\Novabackend\Nova\Fields->identifyForm()
      * @return \Closure
      */
     private function formatTheValueForTheFormWeAreOn($formType)

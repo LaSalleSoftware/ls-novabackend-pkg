@@ -37,7 +37,7 @@
 namespace Lasallesoftware\Novabackend\Nova\Fields;
 
 // LaSalle Software class
-use Lasallesoftware\Library\Nova\Fields\BaseField;
+use Lasallesoftware\Novabackend\Nova\Fields\BaseField;
 
 // Laravel class
 use Illuminate\Support\Carbon;
@@ -47,7 +47,7 @@ use Illuminate\Support\Carbon;
  *
  * Common methods for my custom text fields.
  *
- * @package Lasallesoftware\Library\Nova\Fields
+ * @package Lasallesoftware\Novabackend\Nova\Fields
  */
 class BaseTextField extends BaseField
 {

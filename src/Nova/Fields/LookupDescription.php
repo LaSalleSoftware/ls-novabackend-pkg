@@ -39,7 +39,7 @@ namespace Lasallesoftware\Novabackend\Nova\Fields;
  *
  * Designed specifically for use with lookup tables
  *
- * @package Lasallesoftware\Library\Nova\Fields
+ * @package Lasallesoftware\Novabackend\Nova\Fields
  */
 class LookupDescription extends BaseTextField
 {
@@ -89,7 +89,7 @@ class LookupDescription extends BaseTextField
      * Format this field for the individual forms,
      *
      * @param string  $formType  The form being displayed.
-     *                           From Lasallesoftware\Library\Nova\Fields->identifyForm()
+     *                           From Lasallesoftware\Novabackend\Nova\Fields->identifyForm()
      * @return \Closure
      */
     private function formatTheValueForTheFormWeAreOn($formType)
