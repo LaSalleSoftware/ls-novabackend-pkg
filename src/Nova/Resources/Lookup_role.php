@@ -40,6 +40,7 @@ use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupTitle;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupEnabled;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\Heading;
@@ -193,5 +194,35 @@ class Lookup_role extends BaseResource
     public function actions(Request $request)
     {
         return [];
+    }
+
+    /**
+     * Build an "index" query for the given resource.
+     *
+     * Overrides Laravel\Nova\Actions\ActionResource::indexQuery
+     *
+     * Since Laravel's policies do *NOT* include an action for the controller's INDEX action,
+     * we have to override Nova's resource indexQuery method.
+     *
+     * So, we are going to mimick here what the "index" policy would do.
+     *
+     * Only owners see the index listing.
+     *
+     *
+     * Called from a resource's indexQuery() method.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  \Illuminate\Database\Eloquent\Builder    $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        // owners see all posts
+        if (auth()->user()->hasRole('owner')) {
+            return $query;
+        }
+
+        // still here -- maybe still here by entering the endpoint in the browser
+        return $query->where('id', 0);
     }
 }
