@@ -179,9 +179,6 @@ class Company extends BaseResource
 
 
 
-            Heading::make( __('lasallesoftwarelibrary::general.field_heading_system_fields'))
-                ->hideFromDetail(),
-
             new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
 
             Uuid::make('uuid'),

@@ -147,9 +147,6 @@ class Installed_domain extends BaseResource
             LookupEnabled::make('enabled'),
 
 
-            Heading::make( __('lasallesoftwarelibrary::general.field_heading_system_fields'))
-                ->hideFromDetail(),
-
             new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
 
             //HasMany::make('Category', 'category', 'Lasallesoftware\Blogbackend\Nova\Resources\Category'),
