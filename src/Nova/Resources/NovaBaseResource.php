@@ -43,11 +43,11 @@ use Laravel\Nova\Http\Requests\NovaRequest;
  *
  * *** THIS FILE SHIPS WITH NOVA! ***
  *
- *   * during Nova's installation, this file is placed in Lasallesoftware\Novabackend\Nova\Resources\Resource.php
- *   * custom resource classes extend this class
- *   * I created a base class that extends this class
- *   * Note that this class extends Laravel\Nova\Resource
- *   * I deleted App\Nova\Resource.php
+ *   * During Nova's installation, this file is placed in App\Nova\Resource.php.
+ *   * Custom resource classes are supposed to extend this class.
+ *   * I created Lasallesoftware\Novabackend\Nova\Resources\BaseResource that extends this class.
+ *   * Note that this NovaBaseResource class extends Laravel\Nova\Resource.
+ *   * I deleted App\Nova\Resource.php.
  *   * I am leaving this file untouched (except the name of this class), so I can
  *     update it easily as new versions of Nova are released
  *

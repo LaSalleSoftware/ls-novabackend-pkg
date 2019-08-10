@@ -145,10 +145,9 @@ class Lookup_telephone_type extends BaseResource
 
             LookupEnabled::make('enabled'),
 
+            hasMany::make('Telephone'),
 
             new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
-
-            hasMany::make('Telephone')
         ];
     }
 

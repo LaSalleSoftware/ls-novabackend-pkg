@@ -42,7 +42,6 @@ use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupEnabled;
 
 // Laravel Nova classes
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\ID;
@@ -147,9 +146,11 @@ class Installed_domain extends BaseResource
             LookupEnabled::make('enabled'),
 
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            HasMany::make('Personbydomain')->singularLabel('Personbydomain'),
 
             //HasMany::make('Category', 'category', 'Lasallesoftware\Blogbackend\Nova\Resources\Category'),
+
+            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
         ];
     }
 
