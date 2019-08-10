@@ -46,7 +46,6 @@ use Lasallesoftware\Library\Rules\PersonsUniqueRule;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -240,7 +239,6 @@ class Person extends BaseResource
                 ->hideFromIndex(),
 
 
-            hasOne::make('Personbydomain'),
 
             BelongsToMany::make('Company')->singularLabel('Company'),
             BelongsToMany::make('Address')->singularLabel('Address'),
@@ -302,23 +300,6 @@ class Person extends BaseResource
     }
 
     /**
-     * Build a "relatable" query for the given resource.
-     *
-     * This query determines which instances of the model may be attached to other resources.
-     *
-     * This method is in the Laravel\Nova\PerformsQueries trait.
-     *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @param  \Illuminate\Database\Eloquent\Builder    $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public static function relatableQuery(NovaRequest $request, $query)
-    {
-        // exclude persons that are in the personbydomains database table
-        return $query->doesnthave('personbydomain');
-    }
-
-    /**
      * Build an "index" query for the given resource.
      *
      * Overrides Laravel\Nova\Actions\ActionResource::indexQuery
@@ -339,7 +320,7 @@ class Person extends BaseResource
      */
     public static function indexQuery(NovaRequest $request, $query)
     {
-        // owners see all persons
+        // owners see all posts
         if ((auth()->user()->hasRole('owner')) || (auth()->user()->hasRole('superadministrator'))) {
             return $query;
         }

@@ -145,9 +145,10 @@ class Lookup_email_type extends BaseResource
 
             LookupEnabled::make('enabled'),
 
-            hasMany::make('Email'),
 
             new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+
+            hasMany::make('Email')
         ];
     }
 

@@ -145,9 +145,11 @@ class Lookup_social_type extends BaseResource
 
             LookupEnabled::make('enabled'),
 
-            hasMany::make('Social'),
 
             new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+
+            hasMany::make('Social')
+
         ];
     }
 

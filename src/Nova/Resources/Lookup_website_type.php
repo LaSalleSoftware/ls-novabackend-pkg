@@ -145,9 +145,10 @@ class Lookup_website_type extends BaseResource
 
             LookupEnabled::make('enabled'),
 
-            hasMany::make('Website'),
 
             new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+
+            hasMany::make('Website')
         ];
     }
 
