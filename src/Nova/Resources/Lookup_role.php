@@ -43,6 +43,7 @@ use Lasallesoftware\Novabackend\Nova\Fields\LookupEnabled;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 // Laravel Nova classes
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Panel;
@@ -52,6 +53,8 @@ use Illuminate\Http\Request;
 
 // Laravel facade
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 
 /**
@@ -73,14 +76,15 @@ class Lookup_role extends BaseResource
      *
      * @var string
      */
-    public static $group = 'Lookup Tables';
+    //public static $group = 'Lookup Tables';
+    public static $group = 'Auth';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -102,7 +106,7 @@ class Lookup_role extends BaseResource
      */
     public static function availableForNavigation(Request $request)
     {
-        return Personbydomain::find(Auth::id())->IsOwner();
+        return Personbydomain::find(Auth::id())->IsOwner() || Personbydomain::find(Auth::id())->IsSuperadministrator();
     }
 
     /**
@@ -144,6 +148,11 @@ class Lookup_role extends BaseResource
 
             LookupEnabled::make('enabled'),
 
+            BelongsToMany::make(
+                __('lasallesoftwarelibrary::general.resource_label_plural_personbydomains'),
+                'Personbydomain',
+                'Lasallesoftware\Novabackend\Nova\Resources\Personbydomain'
+            ),
 
             new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
         ];
@@ -192,6 +201,30 @@ class Lookup_role extends BaseResource
     {
         return [];
     }
+    /**
+     * Build a "relatable" query for the given resource.
+     *
+     * This query determines which instances of the model may be attached to other resources.
+     *
+     * This method is in the Laravel\Nova\PerformsQueries trait.
+     *
+     *  ** see also Lasallesoftware\Novabackend\Nova\ResourcesPersonbydomain::relatableLookup_roles(NovaRequest $request, $query) **
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  \Illuminate\Database\Eloquent\Builder    $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function relatableQuery(NovaRequest $request, $query)
+    {
+        // if the user is an owner, then display all the roles
+        if (Personbydomain::find(Auth::id())->IsOwner()) return $query;
+
+        // if the user is a super admin, then display the super admin and admin roles only
+        if (Personbydomain::find(Auth::id())->IsSuperadministrator()) return $query->where('id', 2)->orWhere('id', 3);
+
+        // still here? then display nothing!
+        return $query->where('id', 0);
+    }
 
     /**
      * Build an "index" query for the given resource.
@@ -214,8 +247,13 @@ class Lookup_role extends BaseResource
      */
     public static function indexQuery(NovaRequest $request, $query)
     {
-        // owners see all posts
+        // owners see all lookup_roles
         if (auth()->user()->hasRole('owner')) {
+            return $query;
+        }
+
+        // superadmins see all lookup_roles
+        if (auth()->user()->hasRole('superadministrator')) {
             return $query;
         }
 
