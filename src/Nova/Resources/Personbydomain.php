@@ -43,6 +43,7 @@ use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
@@ -85,7 +86,7 @@ class Personbydomain extends BaseResource
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'name_calculated';
 
     /**
      * The columns that should be searched.
@@ -154,17 +155,12 @@ class Personbydomain extends BaseResource
                 'Lasallesoftware\Novabackend\Nova\Resources\Lookup_role')
             ,
 
+            hasMany::make('Login'),
+
             new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
 
 
             Uuid::make('uuid'),
-
-
-
-
-
-            // LOGINS TABLE!!!
-
 
             //BelongsTo::make('Post')->singularLabel('Post'),
 
