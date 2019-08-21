@@ -83,6 +83,7 @@ class NovabackendServiceProvider extends ServiceProvider
             \Lasallesoftware\Novabackend\Nova\Resources\Login::class,
             \Lasallesoftware\Novabackend\Nova\Resources\Lookup_address_type::class,
             \Lasallesoftware\Novabackend\Nova\Resources\Installed_domain::class,
+            \Lasallesoftware\Novabackend\Nova\Resources\Installed_domains_jwt_key::class,
             \Lasallesoftware\Novabackend\Nova\Resources\Lookup_email_type::class,
             \Lasallesoftware\Novabackend\Nova\Resources\Lookup_lasallesoftware_event::class,
             \Lasallesoftware\Novabackend\Nova\Resources\Lookup_role::class,
