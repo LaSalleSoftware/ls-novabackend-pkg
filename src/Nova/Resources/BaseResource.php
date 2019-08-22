@@ -40,8 +40,8 @@ use Lasallesoftware\Novabackend\Nova\Fields\CreatedBy;
 use Lasallesoftware\Novabackend\Nova\Fields\UpdatedAt;
 use Lasallesoftware\Novabackend\Nova\Fields\UpdatedBy;
 
-// Laravel Nova class moved to the LaSalle Software library
-use Lasallesoftware\Novabackend\Nova\Resources\NovaBaseResource;
+// Nova class
+use Laravel\Nova\Resource;
 
 
 /**
@@ -49,7 +49,7 @@ use Lasallesoftware\Novabackend\Nova\Resources\NovaBaseResource;
  *
  * @package Lasallesoftware\Novabackend\Nova\Resources\BaseResource
  */
-abstract class BaseResource extends NovaBaseResource
+abstract class BaseResource extends Resource
 {
     /**
      * Display the system panel
