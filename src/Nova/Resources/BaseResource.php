@@ -41,6 +41,9 @@ use Lasallesoftware\Novabackend\Nova\Fields\UpdatedAt;
 use Lasallesoftware\Novabackend\Nova\Fields\UpdatedBy;
 
 // Nova class
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Resource;
 
 
@@ -66,6 +69,47 @@ abstract class BaseResource extends Resource
             //Heading::make( __('lasallesoftwarelibrary::general.field_heading_system_fields')),
 
             new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+        ];
+    }
+
+    /**
+     * Get the featured image fields for this resource.
+     *
+     * @return array
+     */
+    public function featuredimageFields()
+    {
+        return [
+            Image::make( __('lasallesoftwarelibrary::general.field_name_featured_image_upload'))
+                ->disableDownload()
+                ->help('<ul>
+                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                     </ul>'
+                )
+                ->hideFromIndex()
+            ,
+
+            Textarea::make(__('lasallesoftwarelibrary::general.field_name_featured_image_code'))
+                ->alwaysShow()
+                ->help('<ul>
+                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_code1') .'</li>
+                         <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_code2') .'</li>
+                     </ul>'
+                )
+                ->hideFromIndex()
+            ,
+
+            Text::make(__('lasallesoftwarelibrary::general.field_name_featured_image_external'))
+                ->help('<ul>
+                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_external1') .'</li>
+                         <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_external2') .'</li>
+                         <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_external3') .'</li>
+                     </ul>'
+                )
+                ->hideFromIndex()
+            ,
         ];
     }
 
