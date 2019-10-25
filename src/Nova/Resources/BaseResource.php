@@ -87,6 +87,8 @@ abstract class BaseResource extends Resource
                      </ul>'
                 )
                 ->hideFromIndex()
+                ->disk(config('lasallesoftware-library.lasalle_filesystem_disk_where_images_are_stored'))
+                ->maxWidth(100)
             ,
 
             Textarea::make(__('lasallesoftwarelibrary::general.field_name_featured_image_code'))
@@ -100,12 +102,13 @@ abstract class BaseResource extends Resource
                 ->hideFromIndex()
             ,
 
-            Text::make(__('lasallesoftwarelibrary::general.field_name_featured_image_external'))
+            Text::make(__('lasallesoftwarelibrary::general.field_name_featured_image_external_file'))
                 ->help('<ul>
                          <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
                          <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_external1') .'</li>
                          <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_external2') .'</li>
                          <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_external3') .'</li>
+                         <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_external4') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex()
