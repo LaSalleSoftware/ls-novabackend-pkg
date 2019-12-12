@@ -41,7 +41,7 @@ use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Datetime;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
