@@ -161,12 +161,14 @@ class Company extends BaseResource
                 ->hideFromIndex(),
 
             Image::make( __('lasallesoftwarelibrary::general.field_name_featured_image'))
+                ->disk(config('lasallesoftware-library.lasalle_filesystem_disk_where_images_are_stored'))
                 ->disableDownload()
                 ->help('<ul>
                          <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
                      </ul>'
                 )
-                ->hideFromIndex(),
+                ->squared('true')
+                ->path(config('lasallesoftware-library.image_path_for_company_nova_resource')),
 
 
 

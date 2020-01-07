@@ -48,8 +48,8 @@ use Lasallesoftware\Library\Rules\PersonsUniqueRule;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\Heading;
-use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 
@@ -58,6 +58,7 @@ use Illuminate\Http\Request;
 
 // Laravel facade
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 /**
@@ -203,13 +204,14 @@ class Person extends BaseResource
                 ->hideFromIndex(),
 
             Image::make( __('lasallesoftwarelibrary::general.field_name_featured_image'))
+                ->disk(config('lasallesoftware-library.lasalle_filesystem_disk_where_images_are_stored'))
                 ->disableDownload()
                 ->help('<ul>
                          <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
                      </ul>'
                 )
-                ->hideFromIndex(),
-
+                ->squared('true')
+                ->path(config('lasallesoftware-library.image_path_for_person_nova_resource')),
 
             Heading::make( __('lasallesoftwarelibrary::general.field_heading_persons_dates')),
 

@@ -241,12 +241,15 @@ class Address extends BaseResource
             Comments::make('comments')
                 ->hideFromIndex(),
 
-            Image::make('Featured Image','featured_image')
+            Image::make( __('lasallesoftwarelibrary::general.field_name_featured_image'))
+                ->disk(config('lasallesoftware-library.lasalle_filesystem_disk_where_images_are_stored'))
+                ->disableDownload()
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
                      </ul>'
                 )
-                ->hideFromIndex(),
+                ->squared('true')
+                ->path(config('lasallesoftware-library.image_path_for_address_nova_resource')),
 
             AddressMaplink::make('map_link'),
 

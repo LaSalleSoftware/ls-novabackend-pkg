@@ -73,50 +73,6 @@ abstract class BaseResource extends Resource
     }
 
     /**
-     * Get the featured image fields for this resource.
-     *
-     * @return array
-     */
-    public function featuredimageFields()
-    {
-        return [
-            Image::make( __('lasallesoftwarelibrary::general.field_name_featured_image_upload'))
-                ->disableDownload()
-                ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
-                     </ul>'
-                )
-                ->hideFromIndex()
-                ->disk(config('lasallesoftware-library.lasalle_filesystem_disk_where_images_are_stored'))
-                ->maxWidth(100)
-            ,
-
-            Textarea::make(__('lasallesoftwarelibrary::general.field_name_featured_image_code'))
-                ->alwaysShow()
-                ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_code1') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_code2') .'</li>
-                     </ul>'
-                )
-                ->hideFromIndex()
-            ,
-
-            Text::make(__('lasallesoftwarelibrary::general.field_name_featured_image_external_file'))
-                ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_external1') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_external2') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_external3') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_featured_image_external4') .'</li>
-                     </ul>'
-                )
-                ->hideFromIndex()
-            ,
-        ];
-    }
-
-    /**
      * Get the system fields for this resource.
      *
      * @return array
@@ -165,5 +121,20 @@ abstract class BaseResource extends Resource
         }
 
         return $query;
+    }
+
+    /**
+     * Ensure that there is a leading slash, but no trailing slash, in the path.
+     *
+     * @param  string  $customPath
+     * @return string
+     */
+    public function cleanCustomImagePath($customPath)
+    {
+        // The path needs a leading slash
+        $path = (substr($customPath, 0,1) == '/') ? $customPath : '/' . $customPath;
+
+        // The path must not have a trailing slash
+        return (substr($path, -1) == '/') ? substr($path, 0, -1) : $path;
     }
 }
