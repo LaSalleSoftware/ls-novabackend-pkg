@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Lasalle Software Nova back-end package
+ * This file is part of the Lasalle Software Nova back-end package.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -26,39 +26,31 @@
  * @license    http://opensource.org/licenses/MIT MIT
  * @author     Bob Bloom
  * @email      bob.bloom@lasallesoftware.ca
- * @link       https://lasallesoftware.ca
- * @link       https://packagist.org/packages/lasallesoftware/lsv2-novabackend-pkg
- * @link       https://github.com/LaSalleSoftware/lsv2-novabackend-pkg
  *
+ * @see       https://lasallesoftware.ca
+ * @see       https://packagist.org/packages/lasallesoftware/lsv2-novabackend-pkg
+ * @see       https://github.com/LaSalleSoftware/lsv2-novabackend-pkg
  */
 
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
-use Lasallesoftware\Library\Authentication\Models\Personbydomain;
-use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
-use Lasallesoftware\Novabackend\Nova\Fields\LookupTitle;
-use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
-use Lasallesoftware\Novabackend\Nova\Fields\LookupEnabled;
-
-// Laravel Nova classes
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\ID;
+// Laravel Nova classes
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
-
+use Lasallesoftware\Library\Authentication\Models\Personbydomain;
+use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
 // Laravel classes
-use Illuminate\Http\Request;
-
+use Lasallesoftware\Novabackend\Nova\Fields\LookupEnabled;
 // Laravel facade
-use Illuminate\Support\Facades\Auth;
-
+use Lasallesoftware\Novabackend\Nova\Fields\LookupTitleInstalleddomain;
 
 /**
- * Class Installed_domain
- *
- * @package Lasallesoftware\Novabackend\Nova\Resources\Installed_domain
+ * Class Installed_domain.
  */
 class Installed_domain extends BaseResource
 {
@@ -92,13 +84,11 @@ class Installed_domain extends BaseResource
         'id', 'title',
     ];
 
-
     /**
      * Determine if this resource is available for navigation.
      *
      * Only owners and super admins can see this resource in navigation.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
     public static function availableForNavigation(Request $request)
@@ -129,7 +119,6 @@ class Installed_domain extends BaseResource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function fields(Request $request)
@@ -137,7 +126,7 @@ class Installed_domain extends BaseResource
         return [
             ID::make()->sortable(),
 
-            LookupTitle::make('title')
+            LookupTitleInstalleddomain::make('title')
                 ->creationRules('unique:installed_domains,title')
                 ->updateRules('unique:installed_domains,title,{{resourceId}}'),
 
@@ -145,15 +134,14 @@ class Installed_domain extends BaseResource
 
             LookupEnabled::make('enabled'),
 
-
             HasMany::make('Personbydomain')->singularLabel('Personbydomain'),
 
-            HasMany::make(__('lasallesoftwarelibrary::general.resource_label_plural_installed_domains_jwt_keys'),
+            HasMany::make(
+                __('lasallesoftwarelibrary::general.resource_label_plural_installed_domains_jwt_keys'),
                 'installed_domains_jwt_key',
-                'Lasallesoftware\Novabackend\Nova\Resources\Installed_domains_jwt_key')
-                ->singularLabel(__('lasallesoftwarelibrary::general.resource_label_singular_installed_domains_jwt_keys'))
-            ,
-
+                'Lasallesoftware\Novabackend\Nova\Resources\Installed_domains_jwt_key'
+            )
+                ->singularLabel(__('lasallesoftwarelibrary::general.resource_label_singular_installed_domains_jwt_keys')),
 
             //HasMany::make('Category', 'category', 'Lasallesoftware\Blogbackend\Nova\Resources\Category'),
 
@@ -164,7 +152,6 @@ class Installed_domain extends BaseResource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function cards(Request $request)
@@ -175,7 +162,6 @@ class Installed_domain extends BaseResource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function filters(Request $request)
@@ -186,7 +172,6 @@ class Installed_domain extends BaseResource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function lenses(Request $request)
@@ -197,7 +182,6 @@ class Installed_domain extends BaseResource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function actions(Request $request)
@@ -217,9 +201,8 @@ class Installed_domain extends BaseResource
      *
      *   ==> SEE NOTE IN indexQuery() method below!! <==
      *
+     * @param \Illuminate\Database\Eloquent\Builder $query
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @param  \Illuminate\Database\Eloquent\Builder    $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public static function relatableQuery(NovaRequest $request, $query)
@@ -248,15 +231,15 @@ class Installed_domain extends BaseResource
      *
      * Called from a resource's indexQuery() method.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @param  \Illuminate\Database\Eloquent\Builder    $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public static function indexQuery(NovaRequest $request, $query)
     {
         /** ****************************************************
          *                 SPECIAL NOTE!!
-         *  ****************************************************
+         *  ****************************************************.
          *
          *     indexQuery() regulates relatableQuery()
          *
@@ -267,13 +250,13 @@ class Installed_domain extends BaseResource
          *
          * My workaround is: if the form is not the "installed_domains" resource, then return the full index listing.
          *                   otherwise, do the usual index listing restrictions for "installed_domains".
-         *
          */
-
         $explodeCurrentUrl = explode('/', url()->current());
         if (array_key_exists(5, $explodeCurrentUrl)) {
-            if ($explodeCurrentUrl[5] != "installed_domains") return $query;
-        };
+            if ('installed_domains' != $explodeCurrentUrl[5]) {
+                return $query;
+            }
+        }
 
         // owners see all installed domains
         if (auth()->user()->hasRole('owner')) {
@@ -281,6 +264,6 @@ class Installed_domain extends BaseResource
         }
 
         // super admins & admins are not allowed to see installed domains
-        return $query->where('id', '=',0);
+        return $query->where('id', '=', 0);
     }
 }
