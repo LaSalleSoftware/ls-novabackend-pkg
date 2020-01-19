@@ -1,6 +1,9 @@
 # CHANGE LOG
 
-## VERSION 2.0.3 (coming!)
+## VERSION 2.0.4 (coming!)
+
+## VERSION 2.0.3 (January 19, 2020)
+* [v2.0.3 issues](https://github.com/LaSalleSoftware/lsv2-novabackend-pkg/milestone/5?closed=1)
 
 ## VERSION 2.0.2 (January 07, 2020)
 * [v2.0.2 issues](https://github.com/LaSalleSoftware/lsv2-novabackend-pkg/milestone/4?closed=1)
@@ -13,4 +16,3 @@
 
 ### All GitHub issues for version 1.9.3 (July 24, 2019)
 * [v1.9.3 issues](https://github.com/LaSalleSoftware/lsv2-novabackend-pkg/milestone/1?closed=1)
-
