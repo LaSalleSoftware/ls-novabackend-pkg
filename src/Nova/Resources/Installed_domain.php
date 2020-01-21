@@ -47,7 +47,7 @@ use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
 // Laravel classes
 use Lasallesoftware\Novabackend\Nova\Fields\LookupEnabled;
 // Laravel facade
-use Lasallesoftware\Novabackend\Nova\Fields\LookupTitleInstalleddomain;
+use Lasallesoftware\Novabackend\Nova\Fields\LookupTitle;
 
 /**
  * Class Installed_domain.
@@ -126,7 +126,7 @@ class Installed_domain extends BaseResource
         return [
             ID::make()->sortable(),
 
-            LookupTitleInstalleddomain::make('title')
+            LookupTitle::make('title')
                 ->creationRules('unique:installed_domains,title')
                 ->updateRules('unique:installed_domains,title,{{resourceId}}'),
 
