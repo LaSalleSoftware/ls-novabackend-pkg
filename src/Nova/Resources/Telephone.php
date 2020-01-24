@@ -85,7 +85,7 @@ class Telephone extends BaseResource
      *
      * @var string
      */
-    public static $title = 'telephone_number';
+    public static $title = 'telephone_calculated';
 
     /**
      * The columns that should be searched.
@@ -145,36 +145,40 @@ class Telephone extends BaseResource
                 ->sortable()
                 ->onlyOnIndex(),
 
-            BaseTextField::make( __('lasallesoftwarelibrary::general.field_name_country_code'))
-                ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_country_code_website_reference') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+            BaseTextField::make(__('lasallesoftwarelibrary::general.field_name_country_code'))
+                ->help(
+                    '<ul>
+                         <li>' . __('lasallesoftwarelibrary::general.field_help_country_code_website_reference') . '</li>
+                         <li>' . __('lasallesoftwarelibrary::general.field_help_required') . '</li>
                      </ul>'
                 )
                 ->rules('required')
                 ->withMeta($this->country_code ? ['value' => $this->country_code] : ['value' => 1])
                 ->hideFromIndex(),
 
-            BaseTextField::make( __('lasallesoftwarelibrary::general.field_name_area_code'))
-                ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+            BaseTextField::make(__('lasallesoftwarelibrary::general.field_name_area_code'))
+                ->help(
+                    '<ul>
+                         <li>' . __('lasallesoftwarelibrary::general.field_help_required') . '</li>
                      </ul>'
                 )
                 ->rules('required')
                 ->hideFromIndex(),
 
-            BaseTextField::make( __('lasallesoftwarelibrary::general.field_name_telephone_number'))
-                ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+            BaseTextField::make(__('lasallesoftwarelibrary::general.field_name_telephone_number'))
+                ->help(
+                    '<ul>
+                         <li>' . __('lasallesoftwarelibrary::general.field_help_required') . '</li>
                      </ul>'
                 )
                 ->rules('required', new TelephonesUniqueRule)
                 ->withMeta($this->telephone_number ? ['value' => $this->maskTelephonenumber($this->telephone_number)] : ['value' => ''])
                 ->hideFromIndex(),
 
-            BaseTextField::make( __('lasallesoftwarelibrary::general.field_name_extension'))
-                ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+            BaseTextField::make(__('lasallesoftwarelibrary::general.field_name_extension'))
+                ->help(
+                    '<ul>
+                         <li>' . __('lasallesoftwarelibrary::general.field_help_optional') . '</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
@@ -184,12 +188,13 @@ class Telephone extends BaseResource
             Comments::make('comments'),
 
 
-            Heading::make( __('lasallesoftwarelibrary::general.field_heading_telephone_type'))
+            Heading::make(__('lasallesoftwarelibrary::general.field_heading_telephone_type'))
                 ->hideFromDetail(),
 
             BelongsTo::make('Telephone Type', 'lookup_telephone_type', 'Lasallesoftware\Novabackend\Nova\Resources\Lookup_telephone_type')
-                ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+                ->help(
+                    '<ul>
+                           <li>' . __('lasallesoftwarelibrary::general.field_help_required') . '</li>
                      </ul>'
                 )
                 ->rules('required'),
@@ -273,7 +278,7 @@ class Telephone extends BaseResource
     private function maskTelephonenumber($telephonenumber)
     {
         if (strlen(trim($telephonenumber)) == 7) {
-            $telephonenumber = substr($telephonenumber, 0,3) . '-' . substr($telephonenumber, 3,4);
+            $telephonenumber = substr($telephonenumber, 0, 3) . '-' . substr($telephonenumber, 3, 4);
         }
         return $telephonenumber;
     }
