@@ -197,7 +197,8 @@ class Telephone extends BaseResource
                            <li>' . __('lasallesoftwarelibrary::general.field_help_required') . '</li>
                      </ul>'
                 )
-                ->rules('required'),
+                ->rules('required')
+                ->sortable(),
 
             BelongsToMany::make('Person')
                 ->singularLabel('Person'),
