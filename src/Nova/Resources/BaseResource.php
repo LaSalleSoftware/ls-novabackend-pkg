@@ -80,11 +80,11 @@ abstract class BaseResource extends Resource
     public function systemFields()
     {
         return [
-            CreatedAt::make('created_at'),
-            CreatedBy::make('created_by'),
+            CreatedAt::make(__('lasallesoftwarelibrary::general.field_name_created_at')),
+            CreatedBy::make(__('lasallesoftwarelibrary::general.field_name_created_by')),
 
-            UpdatedAt::make('updated_at'),
-            UpdatedBy::make('updated_by'),
+            UpdatedAt::make(__('lasallesoftwarelibrary::general.field_name_updated_at')),
+            UpdatedBy::make(__('lasallesoftwarelibrary::general.field_name_updated_by')),
         ];
     }
 
