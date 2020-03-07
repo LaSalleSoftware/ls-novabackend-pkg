@@ -100,14 +100,17 @@ class Personbydomain extends BaseResource
     /**
      * Determine if this resource is available for navigation.
      *
-     * Only the owner role can see this resource in navigation.
+     * All roles can see this resource in navigation.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
     public static function availableForNavigation(Request $request)
     {
-        return Personbydomainmodel::find(Auth::id())->IsOwner() || Personbydomainmodel::find(Auth::id())->IsSuperadministrator();
+        return Personbydomainmodel::find(Auth::id())->IsOwner() || 
+            Personbydomainmodel::find(Auth::id())->IsSuperadministrator() ||
+            Personbydomainmodel::find(Auth::id())->IsAdministrator()
+        ;
     }
 
     /**
@@ -353,6 +356,6 @@ class Personbydomain extends BaseResource
         }
 
         // still here -- maybe still here by entering the endpoint in the browser
-        return $query->where('id', 0);
+        return $query->where('id', Auth::id());
     }
 }
