@@ -49,6 +49,7 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\PasswordConfirmation;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 
@@ -129,6 +130,16 @@ class Personbydomain extends BaseResource
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('unique:personbydomains,email')
                 ->updateRules('unique:personbydomains,email,{{resourceId}}')
+                ->help(
+                    __('lasallesoftwarelibrary::general.field_help_personbydomain_email_preamble1') .
+                    '<ul>
+                        <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_email_preamble2') .'</li>
+                        <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_email_see_website') .'</li>
+                        <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_email_full') .'</li>
+                        <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_email_not_new') .'</li>
+                        <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_email_unique') .'</li>
+                        <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+                     </ul>')
             ,
 
             DateTime::make(__('lasallesoftwarelibrary::general.field_name_email_verified_at'), 'email_verified_at')
@@ -143,10 +154,13 @@ class Personbydomain extends BaseResource
                 //     </ul>'
                 //)
                 ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:6')
-                ->updateRules('nullable', 'string', 'min:6,{{resourceId}}')
+                ->creationRules('required', 'string', 'min:6', 'confirmed')
+                ->updateRules('nullable', 'string', 'min:6,{{resourceId}}', 'confirmed')
             ,
 
+            PasswordConfirmation::make(__('lasallesoftwarelibrary::general.field_name_passwordconfirmation'))
+                ->creationRules('required')
+            ,
 
             new Panel(__('lasallesoftwarelibrary::general.panel_domain_fields'), $this->domainFields()),
 
@@ -180,7 +194,12 @@ class Personbydomain extends BaseResource
         return [
             BelongsTo::make(__('lasallesoftwarelibrary::general.field_name_person'), 'person', 'Lasallesoftware\Novabackend\Nova\Resources\Person')
                 ->help('<ul>
-                           <li>'.__('lasallesoftwarelibrary::general.field_help_required').'</li>
+                            <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_person_associate') .'</li>
+                            <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_person_setup') .'</li>
+                            <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_person_createlink') .'</li>
+                            <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_person_searchbox') .'</li>
+                            <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_person_reminder') .'</li>
+                            <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
                      </ul>'
                 )
                 ->searchable()
@@ -222,7 +241,8 @@ class Personbydomain extends BaseResource
                 'installed_domain',
                 'Lasallesoftware\Novabackend\Nova\Resources\Installed_domain')
                 ->help('<ul>
-                       <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+                        <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_domain_message') .'</li>
+                        <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
                  </ul>'
                 )
                 ->hideFromIndex()
