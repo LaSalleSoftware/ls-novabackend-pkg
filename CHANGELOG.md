@@ -1,6 +1,10 @@
 # CHANGE LOG
 
-## VERSION 2.0.6 (coming!)
+## VERSION 2.0.7 (coming!)
+
+## VERSION 2.0.6 (April 17, 2020)
+Note: This is the final LaSalle Software release for the Laravel Framework series 6.x.
+* [v2.0.6 issues](https://github.com/LaSalleSoftware/lsv2-novabackend-pkg/milestone/78closed=1)
 
 ## VERSION 2.0.5 (February 03, 2020)
 * [v2.0.5 issues](https://github.com/LaSalleSoftware/lsv2-novabackend-pkg/milestone/7?closed=1)
