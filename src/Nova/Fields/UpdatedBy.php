@@ -126,6 +126,11 @@ class UpdatedBy extends BaseTextField
         if ($formType == "detail") {
 
             return $this->resolveCallback = function ($value) {
+
+                if (! isset($value)) {
+                    return "--";
+                }
+
                 $user = DB::table('personbydomains')->where('id', $value )->first();
                 return $user->person_first_name
                     . ' ' .  $user->person_surname

@@ -102,6 +102,10 @@ class BaseTextField extends BaseField
     {
         return $this->resolveCallback = function ($value) {
 
+            if (! isset($value)) { 
+                return "--";
+            }
+
             if (($timestamp = strtotime($value)) === false) {
                 return $value->format('l F dS, Y, g:i:sa');
             }
