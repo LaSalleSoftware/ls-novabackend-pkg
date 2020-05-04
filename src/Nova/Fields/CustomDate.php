@@ -132,6 +132,10 @@ class CustomDate extends BaseField
         if ($formType == "index") {
 
             return $this->resolveCallback = function ($value) {
+
+                if (! isset($value)) {
+                    return "—";
+                }
                 return $value->format('l F dS, Y');
             };
 
@@ -141,6 +145,10 @@ class CustomDate extends BaseField
         if  ($formType == "creation") {
 
             return $this->resolveCallback = function ($value) {
+
+                if (! isset($value)) {
+                    return "";
+                }
                 return $value->format('Y-m-d');
             };
 
@@ -150,6 +158,10 @@ class CustomDate extends BaseField
         if ($formType == "detail") {
 
             return $this->resolveCallback = function ($value) {
+
+                if (! isset($value)) {
+                    return "—";
+                }
                 return $value->format('l F dS, Y');
             };
 
@@ -159,7 +171,11 @@ class CustomDate extends BaseField
         if ($formType == "update") {
 
             return $this->resolveCallback = function ($value) {
-                    return $value->format('Y-m-d');
+                
+                if (! isset($value)) {
+                    return "";
+                }
+                return $value->format('Y-m-d');
             };
         }
     }

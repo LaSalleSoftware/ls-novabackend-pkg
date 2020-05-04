@@ -103,7 +103,7 @@ class BaseTextField extends BaseField
         return $this->resolveCallback = function ($value) {
 
             if (! isset($value)) { 
-                return "--";
+                return "—";
             }
 
             if (($timestamp = strtotime($value)) === false) {
