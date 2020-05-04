@@ -127,6 +127,10 @@ class CommentsEncrypted extends BaseTextField
 
             return $this->resolveCallback = function ($value) {
 
+                // Nova 2.9+ wants this if statement. 
+                if (! isset($value)) {
+                    return "";
+                }
                 $value = Crypt::decrypt($value);
 
                 return substr($value, 0, 50) . "...";
