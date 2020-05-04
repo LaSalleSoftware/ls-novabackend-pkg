@@ -128,7 +128,7 @@ class UpdatedBy extends BaseTextField
             return $this->resolveCallback = function ($value) {
 
                 if (! isset($value)) {
-                    return "--";
+                    return "—";
                 }
 
                 $user = DB::table('personbydomains')->where('id', $value )->first();
