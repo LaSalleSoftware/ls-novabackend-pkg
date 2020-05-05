@@ -41,21 +41,21 @@ class Version
      *
      * @var string
      */
-    const VERSION = '2.0.6';
+    const VERSION = '2.1.0';
 
     /**
      * This package's release date.
      *
      * @var string
      */
-    const RELEASEDATE = 'April 17, 2020';
+    const RELEASEDATE = 'May 04, 2020';
 
     /**
      * This package's name.
      *
      * @var string
      */
-    const PACKAGE = 'Nova back-end package for my LaSalle Software Version 2';
+    const PACKAGE = 'Nova back-end package for my LaSalle Software';
 
     /**
      * Get the version number of this package.
