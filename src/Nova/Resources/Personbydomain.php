@@ -36,12 +36,14 @@ namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
 use Lasallesoftware\Library\Authentication\Models\Personbydomain as Personbydomainmodel;
+use Lasallesoftware\Library\Rules\PersonbydomainsCannotbanselfRule;
 use Lasallesoftware\Novabackend\Nova\Fields\Uuid;
 use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Heading;
@@ -166,6 +168,8 @@ class Personbydomain extends BaseResource
 
             new Panel(__('lasallesoftwarelibrary::general.panel_persons_fields'), $this->personsFields()),
 
+            new Panel(__('lasallesoftwarelibrary::general.panel_banned_fields'), $this->bannedFields()),
+
             BelongsToMany::make(
                 __('lasallesoftwarelibrary::general.resource_label_singular_lookup_roles'),
                 'lookup_role',
@@ -260,6 +264,40 @@ class Personbydomain extends BaseResource
             Text::make(__('lasallesoftwarelibrary::general.field_name_domain_name'), 'installed_domain_title')
                 ->readonly()
                 ->hideWhenCreating()
+            ,
+        ];
+    }
+
+    /**
+     * Get the banned fields for the resource.
+     *
+     * @return array
+     */
+    protected function bannedFields()
+    {
+        return [
+
+            Boolean::make(__('lasallesoftwarelibrary::general.field_name_banned_enabled'), 'banned_enabled')
+                ->rules('required', new PersonbydomainsCannotbanselfRule)
+            ,
+
+            DateTime::make(__('lasallesoftwarelibrary::general.field_name_banned_date'), 'banned_at')
+                ->nullable()
+                ->onlyOnDetail()
+                ->format('MMMM DD YYYY, hh:mm a')
+                ->help('<ul>
+                        <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                    </ul>'
+                )
+            ,
+
+            Text::make(__('lasallesoftwarelibrary::general.field_name_banned_comments'), 'banned_comments')
+                ->help('<ul>
+                         <li>'. __('lasallesoftwarelibrary::general.field_help_max_255_chars') .'</li>
+                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                     </ul>'
+                )
+                ->hideFromIndex()
             ,
         ];
     }
