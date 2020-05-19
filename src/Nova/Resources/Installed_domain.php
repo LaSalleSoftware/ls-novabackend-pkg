@@ -263,7 +263,8 @@ class Installed_domain extends BaseResource
             return $query;
         }
 
-        // super admins & admins are not allowed to see installed domains
-        return $query->where('id', '=', 0);
+        // super admins & admins allowed to see their installed domains only, and where applicable (especially posts),
+        // assign resources to their installed domains only.
+        return $query->where('id', Personbydomain::find(Auth::id())->installed_domain_id);
     }
 }
