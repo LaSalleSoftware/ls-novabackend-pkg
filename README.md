@@ -1,12 +1,12 @@
 # LaSalle Software's Nova Back-end Package
 
 <p align="center">
-<a href="https://packagist.org/packages/lasallesoftware/lsv2-novabackend-pkg"><img src="https://poser.pugx.org/lasallesoftware/lsv2-novabackend-pkg/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/lasallesoftware/lsv2-novabackend-pkg"><img src="https://poser.pugx.org/lasallesoftware/lsv2-novabackend-pkg/license.svg" alt="License"></a>
+<a href="https://packagist.org/packages/lasallesoftware/ls-novabackend-pkg"><img src="https://poser.pugx.org/lasallesoftware/ls-novabackend-pkg/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/lasallesoftware/ls-novabackend-pkg"><img src="https://poser.pugx.org/lasallesoftware/ls-novabackend-pkg/license.svg" alt="License"></a>
 <a href="https://laravel.com/"><img src="https://img.shields.io/badge/Laravel-v6-brightgreen.svg?style=flat-square" alt="Laravel v6.x"></a> 
 </p>
 
-Nova back-end package for my LaSalle Software Version 2.
+Nova back-end package for my LaSalle Software.
 
 ## Security
 

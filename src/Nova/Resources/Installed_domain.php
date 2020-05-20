@@ -28,8 +28,8 @@
  * @email      bob.bloom@lasallesoftware.ca
  *
  * @see       https://lasallesoftware.ca
- * @see       https://packagist.org/packages/lasallesoftware/lsv2-novabackend-pkg
- * @see       https://github.com/LaSalleSoftware/lsv2-novabackend-pkg
+ * @see       https://packagist.org/packages/lasallesoftware/ls-novabackend-pkg
+ * @see       https://github.com/LaSalleSoftware/ls-novabackend-pkg
  */
 
 namespace Lasallesoftware\Novabackend\Nova\Resources;

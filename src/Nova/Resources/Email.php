@@ -27,8 +27,8 @@
  * @author     Bob Bloom
  * @email      bob.bloom@lasallesoftware.ca
  * @link       https://lasallesoftware.ca
- * @link       https://packagist.org/packages/lasallesoftware/lsv2-novabackend-pkg
- * @link       https://github.com/LaSalleSoftware/lsv2-novabackend-pkg
+ * @link       https://packagist.org/packages/lasallesoftware/ls-novabackend-pkg
+ * @link       https://github.com/LaSalleSoftware/ls-novabackend-pkg
  *
  */
 
