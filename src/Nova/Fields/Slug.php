@@ -55,12 +55,12 @@ class Slug extends BaseTextField
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
-        $this->name = __('lasallesoftwarelibrary::general.field_name_slug');
+        $this->name = __('lasallesoftwarelibrarybackend::general.field_name_slug');
 /*
         $this->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_max_255_chars') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_unique') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_unique') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
                      </ul>'
         );
 */

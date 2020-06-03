@@ -56,7 +56,7 @@ class LookupEnabled extends BaseBooleanField
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
-        $this->name = __('lasallesoftwarelibrary::general.field_name_lookup_enabled');
+        $this->name = __('lasallesoftwarelibrarybackend::general.field_name_lookup_enabled');
 
         $this->formatTheValueForTheFormWeAreOn($this->identifyForm());
 

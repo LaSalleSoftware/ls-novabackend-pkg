@@ -42,7 +42,7 @@ use Laravel\Nova\Fields\ID;
 // Laravel Nova classes
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
-use Lasallesoftware\Library\Authentication\Models\Personbydomain;
+use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
 // Laravel classes
 use Lasallesoftware\Novabackend\Nova\Fields\LookupEnabled;
@@ -59,7 +59,7 @@ class Installed_domain extends BaseResource
      *
      * @var string
      */
-    public static $model = 'Lasallesoftware\\Library\\Profiles\\Models\\Installed_domain';
+    public static $model = 'Lasallesoftware\\Librarybackend\\Profiles\\Models\\Installed_domain';
 
     /**
      * The logical group associated with the resource.
@@ -103,7 +103,7 @@ class Installed_domain extends BaseResource
      */
     public static function label()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_plural_installed_domains');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_plural_installed_domains');
     }
 
     /**
@@ -113,7 +113,7 @@ class Installed_domain extends BaseResource
      */
     public static function singularLabel()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_singular_installed_domains');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_singular_installed_domains');
     }
 
     /**
@@ -137,15 +137,15 @@ class Installed_domain extends BaseResource
             HasMany::make('Personbydomain')->singularLabel('Personbydomain'),
 
             HasMany::make(
-                __('lasallesoftwarelibrary::general.resource_label_plural_installed_domains_jwt_keys'),
+                __('lasallesoftwarelibrarybackend::general.resource_label_plural_installed_domains_jwt_keys'),
                 'installed_domains_jwt_key',
                 'Lasallesoftware\Novabackend\Nova\Resources\Installed_domains_jwt_key'
             )
-                ->singularLabel(__('lasallesoftwarelibrary::general.resource_label_singular_installed_domains_jwt_keys')),
+                ->singularLabel(__('lasallesoftwarelibrarybackend::general.resource_label_singular_installed_domains_jwt_keys')),
 
             //HasMany::make('Category', 'category', 'Lasallesoftware\Blogbackend\Nova\Resources\Category'),
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
         ];
     }
 

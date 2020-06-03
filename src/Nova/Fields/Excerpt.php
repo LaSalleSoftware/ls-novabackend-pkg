@@ -53,11 +53,11 @@ class Excerpt extends BaseTextField
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
-        $this->name = __('lasallesoftwarelibrary::general.field_name_excerpt');
+        $this->name = __('lasallesoftwarelibrarybackend::general.field_name_excerpt');
 
         $this->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_excerpt1') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_excerpt2') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_excerpt1') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_excerpt2') .'</li>
                      </ul>')
         ;
 

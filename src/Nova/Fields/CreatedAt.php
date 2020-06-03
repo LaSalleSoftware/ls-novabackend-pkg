@@ -67,7 +67,7 @@ class CreatedAt extends BaseTextField
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
-        $this->name = __('lasallesoftwarelibrary::general.field_name_created_at');
+        $this->name = __('lasallesoftwarelibrarybackend::general.field_name_created_at');
 
         $this->formatTheValueForTheFormWeAreOn($this->identifyForm());
 

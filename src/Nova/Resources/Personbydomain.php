@@ -35,8 +35,8 @@
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
-use Lasallesoftware\Library\Authentication\Models\Personbydomain as Personbydomainmodel;
-use Lasallesoftware\Library\Rules\PersonbydomainsCannotbanselfRule;
+use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain as Personbydomainmodel;
+use Lasallesoftware\Librarybackend\Rules\PersonbydomainsCannotbanselfRule;
 use Lasallesoftware\Novabackend\Nova\Fields\Uuid;
 use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 
@@ -75,7 +75,7 @@ class Personbydomain extends BaseResource
      *
      * @var string
      */
-    public static $model = 'Lasallesoftware\\Library\\Authentication\\Models\\Personbydomain';
+    public static $model = 'Lasallesoftware\\Librarybackend\\Authentication\\Models\\Personbydomain';
 
     /**
      * The logical group associated with the resource.
@@ -127,32 +127,32 @@ class Personbydomain extends BaseResource
         return [
             ID::make()->sortable(),
 
-            Text::make(__('lasallesoftwarelibrary::general.field_name_email'), 'email')
+            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_email'), 'email')
                 ->sortable()
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('unique:personbydomains,email')
                 ->updateRules('unique:personbydomains,email,{{resourceId}}')
                 ->help(
-                    __('lasallesoftwarelibrary::general.field_help_personbydomain_email_preamble1') .
+                    __('lasallesoftwarelibrarybackend::general.field_help_personbydomain_email_preamble1') .
                     '<ul>
-                        <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_email_preamble2') .'</li>
-                        <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_email_see_website') .'</li>
-                        <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_email_full') .'</li>
-                        <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_email_not_new') .'</li>
-                        <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_email_unique') .'</li>
-                        <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+                        <li>'. __('lasallesoftwarelibrarybackend::general.field_help_personbydomain_email_preamble2') .'</li>
+                        <li>'. __('lasallesoftwarelibrarybackend::general.field_help_personbydomain_email_see_website') .'</li>
+                        <li>'. __('lasallesoftwarelibrarybackend::general.field_help_personbydomain_email_full') .'</li>
+                        <li>'. __('lasallesoftwarelibrarybackend::general.field_help_personbydomain_email_not_new') .'</li>
+                        <li>'. __('lasallesoftwarelibrarybackend::general.field_help_personbydomain_email_unique') .'</li>
+                        <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
                      </ul>')
             ,
 
-            DateTime::make(__('lasallesoftwarelibrary::general.field_name_email_verified_at'), 'email_verified_at')
+            DateTime::make(__('lasallesoftwarelibrarybackend::general.field_name_email_verified_at'), 'email_verified_at')
                 ->nullable()
                 ->onlyOnDetail()
                 ->format('MMMM DD YYYY, hh:mm a')
             ,
 
-            Password::make(__('lasallesoftwarelibrary::general.field_name_password'), 'password')
+            Password::make(__('lasallesoftwarelibrarybackend::general.field_name_password'), 'password')
                 //->help('<ul>
-                //           <li>'.__('lasallesoftwarelibrary::general.field_help_required').'</li>
+                //           <li>'.__('lasallesoftwarelibrarybackend::general.field_help_required').'</li>
                 //     </ul>'
                 //)
                 ->onlyOnForms()
@@ -160,25 +160,25 @@ class Personbydomain extends BaseResource
                 ->updateRules('nullable', 'string', 'min:6,{{resourceId}}', 'confirmed')
             ,
 
-            PasswordConfirmation::make(__('lasallesoftwarelibrary::general.field_name_passwordconfirmation'))
+            PasswordConfirmation::make(__('lasallesoftwarelibrarybackend::general.field_name_passwordconfirmation'))
                 ->creationRules('required')
             ,
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_domain_fields'), $this->domainFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_domain_fields'), $this->domainFields()),
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_persons_fields'), $this->personsFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_persons_fields'), $this->personsFields()),
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_banned_fields'), $this->bannedFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_banned_fields'), $this->bannedFields()),
 
             BelongsToMany::make(
-                __('lasallesoftwarelibrary::general.resource_label_singular_lookup_roles'),
+                __('lasallesoftwarelibrarybackend::general.resource_label_singular_lookup_roles'),
                 'lookup_role',
                 'Lasallesoftware\Novabackend\Nova\Resources\Lookup_role')
             ,
 
             hasMany::make('Login'),
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
 
 
             Uuid::make('uuid'),
@@ -196,14 +196,14 @@ class Personbydomain extends BaseResource
     protected function personsFields()
     {
         return [
-            BelongsTo::make(__('lasallesoftwarelibrary::general.field_name_person'), 'person', 'Lasallesoftware\Novabackend\Nova\Resources\Person')
+            BelongsTo::make(__('lasallesoftwarelibrarybackend::general.field_name_person'), 'person', 'Lasallesoftware\Novabackend\Nova\Resources\Person')
                 ->help('<ul>
-                            <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_person_associate') .'</li>
-                            <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_person_setup') .'</li>
-                            <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_person_createlink') .'</li>
-                            <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_person_searchbox') .'</li>
-                            <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_person_reminder') .'</li>
-                            <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_personbydomain_person_associate') .'</li>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_personbydomain_person_setup') .'</li>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_personbydomain_person_createlink') .'</li>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_personbydomain_person_searchbox') .'</li>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_personbydomain_person_reminder') .'</li>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
                      </ul>'
                 )
                 ->searchable()
@@ -211,19 +211,19 @@ class Personbydomain extends BaseResource
                 ->rules('required')
             ,
 
-            Number::make(__('lasallesoftwarelibrary::general.field_name_person_id'), 'person_id')
+            Number::make(__('lasallesoftwarelibrarybackend::general.field_name_person_id'), 'person_id')
                 ->readonly()
                 ->hideFromIndex()
                 ->hideWhenCreating()
             ,
 
-            Text::make(__('lasallesoftwarelibrary::general.field_name_first_name'), 'person_first_name')
+            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_first_name'), 'person_first_name')
                 ->readonly()
                 ->hideFromIndex()
                 ->hideWhenCreating()
             ,
 
-            Text::make(__('lasallesoftwarelibrary::general.field_name_surname'), 'person_surname')
+            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_surname'), 'person_surname')
                 ->readonly()
                 ->hideFromIndex()
                 ->hideWhenCreating()
@@ -241,12 +241,12 @@ class Personbydomain extends BaseResource
         return [
 
             BelongsTo::make(
-                __('lasallesoftwarelibrary::general.field_name_domain_name'),
+                __('lasallesoftwarelibrarybackend::general.field_name_domain_name'),
                 'installed_domain',
                 'Lasallesoftware\Novabackend\Nova\Resources\Installed_domain')
                 ->help('<ul>
-                        <li>'. __('lasallesoftwarelibrary::general.field_help_personbydomain_domain_message') .'</li>
-                        <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+                        <li>'. __('lasallesoftwarelibrarybackend::general.field_help_personbydomain_domain_message') .'</li>
+                        <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
                  </ul>'
                 )
                 ->hideFromIndex()
@@ -255,13 +255,13 @@ class Personbydomain extends BaseResource
                 ->rules('required')
             ,
 
-            Text::make(__('lasallesoftwarelibrary::general.field_name_domain_id'), 'installed_domain_id')
+            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_domain_id'), 'installed_domain_id')
                 ->readonly()
                 ->hideFromIndex()
                 ->hideWhenCreating()
             ,
 
-            Text::make(__('lasallesoftwarelibrary::general.field_name_domain_name'), 'installed_domain_title')
+            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_domain_name'), 'installed_domain_title')
                 ->readonly()
                 ->hideWhenCreating()
             ,
@@ -277,24 +277,24 @@ class Personbydomain extends BaseResource
     {
         return [
 
-            Boolean::make(__('lasallesoftwarelibrary::general.field_name_banned_enabled'), 'banned_enabled')
+            Boolean::make(__('lasallesoftwarelibrarybackend::general.field_name_banned_enabled'), 'banned_enabled')
                 ->rules('required', new PersonbydomainsCannotbanselfRule)
             ,
 
-            DateTime::make(__('lasallesoftwarelibrary::general.field_name_banned_date'), 'banned_at')
+            DateTime::make(__('lasallesoftwarelibrarybackend::general.field_name_banned_date'), 'banned_at')
                 ->nullable()
                 ->onlyOnDetail()
                 ->format('MMMM DD YYYY, hh:mm a')
                 ->help('<ul>
-                        <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                        <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                     </ul>'
                 )
             ,
 
-            Text::make(__('lasallesoftwarelibrary::general.field_name_banned_comments'), 'banned_comments')
+            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_banned_comments'), 'banned_comments')
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_max_255_chars') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex()

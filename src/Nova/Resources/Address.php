@@ -35,13 +35,13 @@
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
-use Lasallesoftware\Library\Authentication\Models\Personbydomain;
+use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain;
 use Lasallesoftware\Novabackend\Nova\Fields\AddressMaplink;
 use Lasallesoftware\Novabackend\Nova\Fields\Comments;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
 use Lasallesoftware\Novabackend\Nova\Fields\Uuid;
 use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
-use Lasallesoftware\Library\Rules\AddressesUniqueRule;
+use Lasallesoftware\Librarybackend\Rules\AddressesUniqueRule;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsTo;
@@ -74,7 +74,7 @@ class Address extends BaseResource
      *
      * @var string
      */
-    public static $model = 'Lasallesoftware\\Library\\Profiles\\Models\\Address';
+    public static $model = 'Lasallesoftware\\Librarybackend\\Profiles\\Models\\Address';
 
     /**
      * The logical group associated with the resource.
@@ -120,7 +120,7 @@ class Address extends BaseResource
      */
     public static function label()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_plural_addresses');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_plural_addresses');
     }
 
     /**
@@ -130,7 +130,7 @@ class Address extends BaseResource
      */
     public static function singularLabel()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_singular_addresses');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_singular_addresses');
     }
 
     /**
@@ -144,12 +144,12 @@ class Address extends BaseResource
         return [
             ID::make()->sortable(),
 
-            Heading::make(__('lasallesoftwarelibrary::general.field_heading_addresses_address')),
+            Heading::make(__('lasallesoftwarelibrarybackend::general.field_heading_addresses_address')),
 
             Text::make('Title')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_max_255_chars') .'</li>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
@@ -163,7 +163,7 @@ class Address extends BaseResource
                 ->sortable()
                 ->hideFromIndex()
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
                      </ul>'
                 )
                 ->rules('required', new AddressesUniqueRule),
@@ -171,69 +171,69 @@ class Address extends BaseResource
 
             Text::make('Address Line 2')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
 
             Text::make('Address Line 3')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
 
             Text::make('Address Line 4')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
 
             Text::make('City')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
 
             Text::make('Province')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
 
             Country::make('Country')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
 
             Text::make('Postal Code', 'postal_code')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
 
             Text::make('Latitude', 'latitude')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
 
             Text::make('Longitude', 'longitude')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
 
 
-            Heading::make(__('lasallesoftwarelibrary::general.field_heading_addresses_general_info')),
+            Heading::make(__('lasallesoftwarelibrarybackend::general.field_heading_addresses_general_info')),
 
             LookupDescription::make('description')
                 ->hideFromIndex(),
@@ -241,11 +241,11 @@ class Address extends BaseResource
             Comments::make('comments')
                 ->hideFromIndex(),
 
-            Image::make( __('lasallesoftwarelibrary::general.field_name_featured_image'))
+            Image::make( __('lasallesoftwarelibrarybackend::general.field_name_featured_image'))
                 ->disk(config('lasallesoftware-library.lasalle_filesystem_disk_where_images_are_stored'))
                 ->disableDownload()
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->squared('true')
@@ -253,12 +253,12 @@ class Address extends BaseResource
 
             AddressMaplink::make('map_link'),
 
-            Heading::make( __('lasallesoftwarelibrary::general.field_heading_address_type'))
+            Heading::make( __('lasallesoftwarelibrarybackend::general.field_heading_address_type'))
                 ->hideFromDetail(),
 
             BelongsTo::make('Address Type', 'lookup_address_type', 'Lasallesoftware\Novabackend\Nova\Resources\Lookup_address_type')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
                      </ul>'
                 )
                 ->rules('required')
@@ -267,7 +267,7 @@ class Address extends BaseResource
             BelongsToMany::make('Person')
                 ->singularLabel('Person'),
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
 
             Uuid::make('uuid'),
         ];

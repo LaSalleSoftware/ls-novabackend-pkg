@@ -35,7 +35,7 @@
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
-use Lasallesoftware\Library\Authentication\Models\Personbydomain;
+use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain;
 use Lasallesoftware\Novabackend\Nova\Fields\Comments;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
 use Lasallesoftware\Novabackend\Nova\Fields\BaseTextField as Text;
@@ -69,7 +69,7 @@ class Company extends BaseResource
      *
      * @var string
      */
-    public static $model = 'Lasallesoftware\\Library\\Profiles\\Models\\Company';
+    public static $model = 'Lasallesoftware\\Librarybackend\\Profiles\\Models\\Company';
 
     /**
      * The logical group associated with the resource.
@@ -115,7 +115,7 @@ class Company extends BaseResource
      */
     public static function label()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_plural_companies');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_plural_companies');
     }
 
     /**
@@ -125,7 +125,7 @@ class Company extends BaseResource
      */
     public static function singularLabel()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_singular_companies');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_singular_companies');
     }
 
     /**
@@ -139,11 +139,11 @@ class Company extends BaseResource
         return [
             ID::make()->sortable(),
 
-            Text::make(__('lasallesoftwarelibrary::general.field_name_name'))
+            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_name'))
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_max_255_chars') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_unique') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_unique') .'</li>
                      </ul>'
                 )
                 ->sortable()
@@ -153,18 +153,18 @@ class Company extends BaseResource
 
             Comments::make('comments'),
 
-            Text::make( __('lasallesoftwarelibrary::general.field_name_profile'))
+            Text::make( __('lasallesoftwarelibrarybackend::general.field_name_profile'))
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
 
-            Image::make( __('lasallesoftwarelibrary::general.field_name_featured_image'))
+            Image::make( __('lasallesoftwarelibrarybackend::general.field_name_featured_image'))
                 ->disk(config('lasallesoftware-library.lasalle_filesystem_disk_where_images_are_stored'))
                 ->disableDownload()
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->squared('true')
@@ -181,7 +181,7 @@ class Company extends BaseResource
 
 
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
 
             Uuid::make('uuid'),
         ];

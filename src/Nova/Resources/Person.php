@@ -35,14 +35,14 @@
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
-use Lasallesoftware\Library\Authentication\Models\Personbydomain;
+use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain;
 use Lasallesoftware\Novabackend\Nova\Fields\Comments;
 use Lasallesoftware\Novabackend\Nova\Fields\CustomDate;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
 use Lasallesoftware\Novabackend\Nova\Fields\BaseTextField as Text;
 use Lasallesoftware\Novabackend\Nova\Fields\Uuid;
 use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
-use Lasallesoftware\Library\Rules\PersonsUniqueRule;
+use Lasallesoftware\Librarybackend\Rules\PersonsUniqueRule;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsToMany;
@@ -73,7 +73,7 @@ class Person extends BaseResource
      *
      * @var string
      */
-    public static $model = 'Lasallesoftware\\Library\\Profiles\\Models\\Person';
+    public static $model = 'Lasallesoftware\\Librarybackend\\Profiles\\Models\\Person';
 
     /**
      * The logical group associated with the resource.
@@ -119,7 +119,7 @@ class Person extends BaseResource
      */
     public static function label()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_plural_persons');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_plural_persons');
     }
 
     /**
@@ -129,7 +129,7 @@ class Person extends BaseResource
      */
     public static function singularLabel()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_singular_persons');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_singular_persons');
     }
 
     /**
@@ -144,12 +144,12 @@ class Person extends BaseResource
             ID::make()->sortable(),
 
 
-            Heading::make( __('lasallesoftwarelibrary::general.field_heading_persons_name')),
+            Heading::make( __('lasallesoftwarelibrarybackend::general.field_heading_persons_name')),
 
-            Text::make( __('lasallesoftwarelibrary::general.field_name_salutation'))
+            Text::make( __('lasallesoftwarelibrarybackend::general.field_name_salutation'))
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_salutation') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_salutation') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
@@ -158,27 +158,27 @@ class Person extends BaseResource
                 ->sortable()
                 ->onlyOnIndex(),
 
-            Text::make( __('lasallesoftwarelibrary::general.field_name_first_name'))
+            Text::make( __('lasallesoftwarelibrarybackend::general.field_name_first_name'))
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_max_255_chars') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex()
                 ->rules('required'),
 
-            Text::make( __('lasallesoftwarelibrary::general.field_name_middle_name'))
+            Text::make( __('lasallesoftwarelibrarybackend::general.field_name_middle_name'))
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_max_255_chars') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
 
-            Text::make( __('lasallesoftwarelibrary::general.field_name_surname'))
+            Text::make( __('lasallesoftwarelibrarybackend::general.field_name_surname'))
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_max_255_chars') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex()
@@ -186,12 +186,12 @@ class Person extends BaseResource
 
 
 
-            Heading::make( __('lasallesoftwarelibrary::general.field_heading_persons_general_info')),
+            Heading::make( __('lasallesoftwarelibrarybackend::general.field_heading_persons_general_info')),
 
-            Text::make( __('lasallesoftwarelibrary::general.field_name_position'))
+            Text::make( __('lasallesoftwarelibrarybackend::general.field_name_position'))
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_max_255_chars') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
@@ -200,43 +200,43 @@ class Person extends BaseResource
 
             Comments::make('comments'),
 
-            Text::make( __('lasallesoftwarelibrary::general.field_name_profile'))
+            Text::make( __('lasallesoftwarelibrarybackend::general.field_name_profile'))
                 ->hideFromIndex(),
 
-            Image::make( __('lasallesoftwarelibrary::general.field_name_featured_image'))
+            Image::make( __('lasallesoftwarelibrarybackend::general.field_name_featured_image'))
                 ->disk(config('lasallesoftware-library.lasalle_filesystem_disk_where_images_are_stored'))
                 ->disableDownload()
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->squared('true')
                 ->path(config('lasallesoftware-library.image_path_for_person_nova_resource')),
 
-            Heading::make( __('lasallesoftwarelibrary::general.field_heading_persons_dates')),
+            Heading::make( __('lasallesoftwarelibrarybackend::general.field_heading_persons_dates')),
 
-            CustomDate::make(__('lasallesoftwarelibrary::general.field_name_birthday'))
+            CustomDate::make(__('lasallesoftwarelibrarybackend::general.field_name_birthday'))
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 ),
 
-            CustomDate::make(__('lasallesoftwarelibrary::general.field_name_anniversary'))
+            CustomDate::make(__('lasallesoftwarelibrarybackend::general.field_name_anniversary'))
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 ),
 
-            CustomDate::make(__('lasallesoftwarelibrary::general.field_name_deceased'))
+            CustomDate::make(__('lasallesoftwarelibrarybackend::general.field_name_deceased'))
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 ),
 
-            Text::make(__('lasallesoftwarelibrary::general.field_name_comments_date'), 'comments_date' )
+            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_comments_date'), 'comments_date' )
                 ->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_max_255_chars') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
@@ -253,7 +253,7 @@ class Person extends BaseResource
 
 
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
 
             Uuid::make('uuid'),
         ];

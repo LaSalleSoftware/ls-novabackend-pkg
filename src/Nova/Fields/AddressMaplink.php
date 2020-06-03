@@ -54,10 +54,10 @@ class AddressMaplink extends BaseTextField
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
-        $this->name = __('lasallesoftwarelibrary::general.field_name_addressmaplink');
+        $this->name = __('lasallesoftwarelibrarybackend::general.field_name_addressmaplink');
 
         $this->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
         );
 

@@ -35,7 +35,7 @@
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
-use Lasallesoftware\Library\Authentication\Models\Personbydomain;
+use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain;
 use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupTitle;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
@@ -66,7 +66,7 @@ class Lookup_lasallesoftware_event extends BaseResource
      *
      * @var string
      */
-    public static $model = 'Lasallesoftware\\Library\\LaSalleSoftwareEvents\\Models\\Lookup_lasallesoftware_event';
+    public static $model = 'Lasallesoftware\\Librarybackend\\LaSalleSoftwareEvents\\Models\\Lookup_lasallesoftware_event';
 
     /**
      * The logical group associated with the resource.
@@ -112,7 +112,7 @@ class Lookup_lasallesoftware_event extends BaseResource
      */
     public static function label()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_plural_lookup_lasallesoftware_events');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_plural_lookup_lasallesoftware_events');
     }
 
     /**
@@ -122,7 +122,7 @@ class Lookup_lasallesoftware_event extends BaseResource
      */
     public static function singularLabel()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_singular_lookup_lasallesoftware_events');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_singular_lookup_lasallesoftware_events');
     }
 
     /**
@@ -145,7 +145,7 @@ class Lookup_lasallesoftware_event extends BaseResource
             LookupEnabled::make('enabled'),
 
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
         ];
     }
 

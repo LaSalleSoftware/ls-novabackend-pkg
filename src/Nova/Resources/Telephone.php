@@ -36,13 +36,13 @@ namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
 use Laravel\Nova\Fields\Text;
-use Lasallesoftware\Library\Authentication\Models\Personbydomain;
+use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain;
 use Lasallesoftware\Novabackend\Nova\Fields\BaseTextField;
 use Lasallesoftware\Novabackend\Nova\Fields\Comments;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
 use Lasallesoftware\Novabackend\Nova\Fields\Uuid;
 use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
-use Lasallesoftware\Library\Rules\TelephonesUniqueRule;
+use Lasallesoftware\Librarybackend\Rules\TelephonesUniqueRule;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsTo;
@@ -71,7 +71,7 @@ class Telephone extends BaseResource
      *
      * @var string
      */
-    public static $model = 'Lasallesoftware\\Library\\Profiles\\Models\\Telephone';
+    public static $model = 'Lasallesoftware\\Librarybackend\\Profiles\\Models\\Telephone';
 
     /**
      * The logical group associated with the resource.
@@ -117,7 +117,7 @@ class Telephone extends BaseResource
      */
     public static function label()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_plural_telephone_numbers');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_plural_telephone_numbers');
     }
 
     /**
@@ -127,7 +127,7 @@ class Telephone extends BaseResource
      */
     public static function singularLabel()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_singular_telephone_numbers');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_singular_telephone_numbers');
     }
 
     /**
@@ -145,40 +145,40 @@ class Telephone extends BaseResource
                 ->sortable()
                 ->onlyOnIndex(),
 
-            BaseTextField::make(__('lasallesoftwarelibrary::general.field_name_country_code'))
+            BaseTextField::make(__('lasallesoftwarelibrarybackend::general.field_name_country_code'))
                 ->help(
                     '<ul>
-                         <li>' . __('lasallesoftwarelibrary::general.field_help_country_code_website_reference') . '</li>
-                         <li>' . __('lasallesoftwarelibrary::general.field_help_required') . '</li>
+                         <li>' . __('lasallesoftwarelibrarybackend::general.field_help_country_code_website_reference') . '</li>
+                         <li>' . __('lasallesoftwarelibrarybackend::general.field_help_required') . '</li>
                      </ul>'
                 )
                 ->rules('required')
                 ->withMeta($this->country_code ? ['value' => $this->country_code] : ['value' => 1])
                 ->hideFromIndex(),
 
-            BaseTextField::make(__('lasallesoftwarelibrary::general.field_name_area_code'))
+            BaseTextField::make(__('lasallesoftwarelibrarybackend::general.field_name_area_code'))
                 ->help(
                     '<ul>
-                         <li>' . __('lasallesoftwarelibrary::general.field_help_required') . '</li>
+                         <li>' . __('lasallesoftwarelibrarybackend::general.field_help_required') . '</li>
                      </ul>'
                 )
                 ->rules('required')
                 ->hideFromIndex(),
 
-            BaseTextField::make(__('lasallesoftwarelibrary::general.field_name_telephone_number'))
+            BaseTextField::make(__('lasallesoftwarelibrarybackend::general.field_name_telephone_number'))
                 ->help(
                     '<ul>
-                         <li>' . __('lasallesoftwarelibrary::general.field_help_required') . '</li>
+                         <li>' . __('lasallesoftwarelibrarybackend::general.field_help_required') . '</li>
                      </ul>'
                 )
                 ->rules('required', new TelephonesUniqueRule)
                 ->withMeta($this->telephone_number ? ['value' => $this->maskTelephonenumber($this->telephone_number)] : ['value' => ''])
                 ->hideFromIndex(),
 
-            BaseTextField::make(__('lasallesoftwarelibrary::general.field_name_extension'))
+            BaseTextField::make(__('lasallesoftwarelibrarybackend::general.field_name_extension'))
                 ->help(
                     '<ul>
-                         <li>' . __('lasallesoftwarelibrary::general.field_help_optional') . '</li>
+                         <li>' . __('lasallesoftwarelibrarybackend::general.field_help_optional') . '</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
@@ -188,13 +188,13 @@ class Telephone extends BaseResource
             Comments::make('comments'),
 
 
-            Heading::make(__('lasallesoftwarelibrary::general.field_heading_telephone_type'))
+            Heading::make(__('lasallesoftwarelibrarybackend::general.field_heading_telephone_type'))
                 ->hideFromDetail(),
 
             BelongsTo::make('Telephone Type', 'lookup_telephone_type', 'Lasallesoftware\Novabackend\Nova\Resources\Lookup_telephone_type')
                 ->help(
                     '<ul>
-                           <li>' . __('lasallesoftwarelibrary::general.field_help_required') . '</li>
+                           <li>' . __('lasallesoftwarelibrarybackend::general.field_help_required') . '</li>
                      </ul>'
                 )
                 ->rules('required')
@@ -204,7 +204,7 @@ class Telephone extends BaseResource
                 ->singularLabel('Person'),
 
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
 
             Uuid::make('uuid'),
         ];

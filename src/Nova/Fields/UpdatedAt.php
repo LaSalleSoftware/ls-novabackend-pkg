@@ -67,7 +67,7 @@ class UpdatedAt extends BaseTextField
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
-        $this->name = __('lasallesoftwarelibrary::general.field_name_updated_at');
+        $this->name = __('lasallesoftwarelibrarybackend::general.field_name_updated_at');
 
         $this->nullable();
 

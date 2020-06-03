@@ -35,7 +35,7 @@
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
-use Lasallesoftware\Library\Authentication\Models\Personbydomain;
+use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain;
 use Lasallesoftware\Novabackend\Nova\Fields\CommentsEncrypted;
 use Lasallesoftware\Novabackend\Nova\Fields\Website as CustomWebsite;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
@@ -69,7 +69,7 @@ class Website extends BaseResource
      *
      * @var string
      */
-    public static $model = 'Lasallesoftware\\Library\\Profiles\\Models\\Website';
+    public static $model = 'Lasallesoftware\\Librarybackend\\Profiles\\Models\\Website';
 
     /**
      * The logical group associated with the resource.
@@ -115,7 +115,7 @@ class Website extends BaseResource
      */
     public static function label()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_plural_websites');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_plural_websites');
     }
 
     /**
@@ -125,7 +125,7 @@ class Website extends BaseResource
      */
     public static function singularLabel()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_singular_websites');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_singular_websites');
     }
 
     /**
@@ -146,12 +146,12 @@ class Website extends BaseResource
             CommentsEncrypted::make('comments'),
 
 
-            Heading::make( __('lasallesoftwarelibrary::general.field_heading_website_type'))
+            Heading::make( __('lasallesoftwarelibrarybackend::general.field_heading_website_type'))
                 ->hideFromDetail(),
 
             BelongsTo::make('Website Type', 'lookup_website_type', 'Lasallesoftware\Novabackend\Nova\Resources\Lookup_website_type')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
                      </ul>'
                 )
                 ->rules('required')
@@ -162,7 +162,7 @@ class Website extends BaseResource
 
 
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
 
             Uuid::make('uuid'),
         ];

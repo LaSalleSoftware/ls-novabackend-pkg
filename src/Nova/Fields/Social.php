@@ -54,13 +54,13 @@ class Social extends BaseTextField
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
-        $this->name = __('lasallesoftwarelibrary::general.field_name_social');
+        $this->name = __('lasallesoftwarelibrarybackend::general.field_name_social');
 
         if ($this->identifyForm() == "creation")  {
 
             $this->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_unique') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_unique') .'</li>
                      </ul>'
             );
         }

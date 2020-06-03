@@ -35,7 +35,7 @@
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
-use Lasallesoftware\Library\Authentication\Models\Personbydomain;
+use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain;
 use Lasallesoftware\Novabackend\Nova\Fields\Comments;
 use Lasallesoftware\Novabackend\Nova\Fields\Email as CustomEmail;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
@@ -69,7 +69,7 @@ class Email extends BaseResource
      *
      * @var string
      */
-    public static $model = 'Lasallesoftware\\Library\\Profiles\\Models\\Email';
+    public static $model = 'Lasallesoftware\\Librarybackend\\Profiles\\Models\\Email';
 
     /**
      * The logical group associated with the resource.
@@ -115,7 +115,7 @@ class Email extends BaseResource
      */
     public static function label()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_plural_emails');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_plural_emails');
     }
 
     /**
@@ -125,7 +125,7 @@ class Email extends BaseResource
      */
     public static function singularLabel()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_singular_emails');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_singular_emails');
     }
 
     /**
@@ -146,12 +146,12 @@ class Email extends BaseResource
             Comments::make('comments'),
 
 
-            Heading::make( __('lasallesoftwarelibrary::general.field_heading_email_type'))
+            Heading::make( __('lasallesoftwarelibrarybackend::general.field_heading_email_type'))
                 ->hideFromDetail(),
 
             BelongsTo::make('Email Type', 'lookup_email_type', 'Lasallesoftware\Novabackend\Nova\Resources\Lookup_email_type')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
                      </ul>'
                 )
                 ->rules('required')
@@ -161,7 +161,7 @@ class Email extends BaseResource
                 ->singularLabel('Person'),
 
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
 
             Uuid::make('uuid'),
         ];

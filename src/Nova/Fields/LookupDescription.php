@@ -55,11 +55,11 @@ class LookupDescription extends BaseTextField
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
-        $this->name = __('lasallesoftwarelibrary::general.field_name_lookup_description');
+        $this->name = __('lasallesoftwarelibrarybackend::general.field_name_lookup_description');
 
         $this->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_max_255_chars') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_optional') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
         );
 

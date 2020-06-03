@@ -53,7 +53,7 @@ class Domain extends BaseTextField
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
-        $this->name = __('lasallesoftwarelibrary::general.field_name_domain');
+        $this->name = __('lasallesoftwarelibrarybackend::general.field_name_domain');
 
         $this->formatTheValueForTheFormWeAreOn($this->identifyForm());
 

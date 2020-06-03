@@ -35,7 +35,7 @@
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
-use Lasallesoftware\Library\Authentication\Models\Personbydomain;
+use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain;
 use Lasallesoftware\Novabackend\Nova\Fields\Comments;
 use Lasallesoftware\Novabackend\Nova\Fields\Social as CustomSocial;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
@@ -69,7 +69,7 @@ class Social extends BaseResource
      *
      * @var string
      */
-    public static $model = 'Lasallesoftware\\Library\\Profiles\\Models\\Social';
+    public static $model = 'Lasallesoftware\\Librarybackend\\Profiles\\Models\\Social';
 
     /**
      * The logical group associated with the resource.
@@ -115,7 +115,7 @@ class Social extends BaseResource
      */
     public static function label()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_plural_social_sites');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_plural_social_sites');
     }
 
     /**
@@ -125,7 +125,7 @@ class Social extends BaseResource
      */
     public static function singularLabel()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_singular_social_sites');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_singular_social_sites');
     }
 
     /**
@@ -146,12 +146,12 @@ class Social extends BaseResource
             Comments::make('comments'),
 
 
-            Heading::make( __('lasallesoftwarelibrary::general.field_heading_social_type'))
+            Heading::make( __('lasallesoftwarelibrarybackend::general.field_heading_social_type'))
                 ->hideFromDetail(),
 
             BelongsTo::make('Social Type', 'lookup_social_type', 'Lasallesoftware\Novabackend\Nova\Resources\Lookup_social_type')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
                      </ul>'
                 )
                 ->rules('required')
@@ -161,7 +161,7 @@ class Social extends BaseResource
                 ->singularLabel('Person'),
 
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
 
             Uuid::make('uuid'),
         ];

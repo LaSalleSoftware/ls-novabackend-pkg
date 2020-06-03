@@ -71,7 +71,7 @@ class CreatedBy extends BaseTextField
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
-        $this->name = __('lasallesoftwarelibrary::general.field_name_created_by');
+        $this->name = __('lasallesoftwarelibrarybackend::general.field_name_created_by');
 
         $this->withMeta(['type' => 'number']);
 

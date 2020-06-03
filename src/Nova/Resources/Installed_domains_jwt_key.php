@@ -35,7 +35,7 @@
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
-use Lasallesoftware\Library\Authentication\Models\Personbydomain;
+use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain;
 use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupEnabled;
 
@@ -65,7 +65,7 @@ class Installed_domains_jwt_key extends BaseResource
      *
      * @var string
      */
-    public static $model = 'Lasallesoftware\\Library\\Authentication\\Models\\Installed_domains_jwt_key';
+    public static $model = 'Lasallesoftware\\Librarybackend\\Authentication\\Models\\Installed_domains_jwt_key';
 
     /**
      * The logical group associated with the resource.
@@ -111,7 +111,7 @@ class Installed_domains_jwt_key extends BaseResource
      */
     public static function label()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_plural_installed_domains_jwt_keys');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_plural_installed_domains_jwt_keys');
     }
 
     /**
@@ -121,7 +121,7 @@ class Installed_domains_jwt_key extends BaseResource
      */
     public static function singularLabel()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_singular_installed_domains_jwt_keys');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_singular_installed_domains_jwt_keys');
     }
 
     /**
@@ -136,15 +136,15 @@ class Installed_domains_jwt_key extends BaseResource
             ID::make()->sortable(),
 
             BelongsTo::make('Installed Domain', 'installed_domain', 'Lasallesoftware\Novabackend\Nova\Resources\Installed_domain')
-                ->singularLabel(__('lasallesoftwarelibrary::general.resource_label_singular_installed_domains'))
+                ->singularLabel(__('lasallesoftwarelibrarybackend::general.resource_label_singular_installed_domains'))
             ,
 
-            Text::make(__('lasallesoftwarelibrary::general.field_name_key')),
+            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_key')),
 
             LookupEnabled::make('enabled'),
 
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
         ];
     }
 

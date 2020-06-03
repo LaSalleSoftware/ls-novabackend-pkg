@@ -35,7 +35,7 @@
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
-use Lasallesoftware\Library\Authentication\Models\Personbydomain;
+use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain;
 use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupTitle;
 use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
@@ -69,7 +69,7 @@ class Lookup_role extends BaseResource
      *
      * @var string
      */
-    public static $model = 'Lasallesoftware\\Library\\Authentication\\Models\\Lookup_role';
+    public static $model = 'Lasallesoftware\\Librarybackend\\Authentication\\Models\\Lookup_role';
 
     /**
      * The logical group associated with the resource.
@@ -116,7 +116,7 @@ class Lookup_role extends BaseResource
      */
     public static function label()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_plural_lookup_roles');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_plural_lookup_roles');
     }
 
     /**
@@ -126,7 +126,7 @@ class Lookup_role extends BaseResource
      */
     public static function singularLabel()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_singular_lookup_roles');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_singular_lookup_roles');
     }
 
     /**
@@ -149,12 +149,12 @@ class Lookup_role extends BaseResource
             LookupEnabled::make('enabled'),
 
             BelongsToMany::make(
-                __('lasallesoftwarelibrary::general.resource_label_plural_personbydomains'),
+                __('lasallesoftwarelibrarybackend::general.resource_label_plural_personbydomains'),
                 'Personbydomain',
                 'Lasallesoftware\Novabackend\Nova\Resources\Personbydomain'
             ),
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
         ];
     }
 

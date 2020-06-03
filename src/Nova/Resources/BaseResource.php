@@ -66,9 +66,9 @@ abstract class BaseResource extends Resource
             // Nova v2.0.8 now displays panels on the create and update views in addition to the detail view.
             // So, now that there is a separate panel for this, I should remove my own heading.
 
-            //Heading::make( __('lasallesoftwarelibrary::general.field_heading_system_fields')),
+            //Heading::make( __('lasallesoftwarelibrarybackend::general.field_heading_system_fields')),
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
         ];
     }
 
@@ -80,11 +80,11 @@ abstract class BaseResource extends Resource
     public function systemFields()
     {
         return [
-            CreatedAt::make(__('lasallesoftwarelibrary::general.field_name_created_at')),
-            CreatedBy::make(__('lasallesoftwarelibrary::general.field_name_created_by')),
+            CreatedAt::make(__('lasallesoftwarelibrarybackend::general.field_name_created_at')),
+            CreatedBy::make(__('lasallesoftwarelibrarybackend::general.field_name_created_by')),
 
-            UpdatedAt::make(__('lasallesoftwarelibrary::general.field_name_updated_at')),
-            UpdatedBy::make(__('lasallesoftwarelibrary::general.field_name_updated_by')),
+            UpdatedAt::make(__('lasallesoftwarelibrarybackend::general.field_name_updated_at')),
+            UpdatedBy::make(__('lasallesoftwarelibrarybackend::general.field_name_updated_by')),
         ];
     }
 

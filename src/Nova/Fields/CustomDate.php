@@ -70,7 +70,7 @@ class CustomDate extends BaseField
         parent::__construct($name, $attribute, $resolveCallback ?? function ($value) {
 
                 if (! $value instanceof DateTimeInterface) {
-                    throw new Exception(__('lasallesoftwarelibrary::general.exception_message_date_cast'));
+                    throw new Exception(__('lasallesoftwarelibrarybackend::general.exception_message_date_cast'));
                 }
             }
         );
@@ -79,7 +79,7 @@ class CustomDate extends BaseField
 
         $this->specifyShowOnForms();
 
-        $this->withMeta(['placeholder' => $attribute ?? __('lasallesoftwarelibrary::general.not_specified')]);
+        $this->withMeta(['placeholder' => $attribute ?? __('lasallesoftwarelibrarybackend::general.not_specified')]);
     }
 
     /**

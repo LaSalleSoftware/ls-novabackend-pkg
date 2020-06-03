@@ -35,7 +35,7 @@
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
-use Lasallesoftware\Library\Authentication\Models\Personbydomain;
+use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain;
 use Lasallesoftware\Novabackend\Nova\Fields\Uuid;
 use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 
@@ -66,7 +66,7 @@ class Login extends BaseResource
      *
      * @var string
      */
-    public static $model = 'Lasallesoftware\\Library\\Authentication\\Models\\Login';
+    public static $model = 'Lasallesoftware\\Librarybackend\\Authentication\\Models\\Login';
 
     /**
      * The logical group associated with the resource.
@@ -110,7 +110,7 @@ class Login extends BaseResource
      */
     public static function label()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_plural_logins');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_plural_logins');
     }
 
     /**
@@ -120,7 +120,7 @@ class Login extends BaseResource
      */
     public static function singularLabel()
     {
-        return __('lasallesoftwarelibrary::general.resource_label_singular_logins');
+        return __('lasallesoftwarelibrarybackend::general.resource_label_singular_logins');
     }
 
     /**
@@ -135,20 +135,20 @@ class Login extends BaseResource
             ID::make()->sortable(),
 
             BelongsTo::make(
-                __('lasallesoftwarelibrary::general.resource_label_singular_personbydomains'),
+                __('lasallesoftwarelibrarybackend::general.resource_label_singular_personbydomains'),
                 'personbydomain',
                 'Lasallesoftware\Novabackend\Nova\Resources\Personbydomain'
             ),
 
-            Text::make(__('lasallesoftwarelibrary::general.field_name_token'), 'token'),
+            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_token'), 'token'),
 
-            DateTime::make(__('lasallesoftwarelibrary::general.field_name_updated_at'), 'updated_at')
+            DateTime::make(__('lasallesoftwarelibrarybackend::general.field_name_updated_at'), 'updated_at')
                 ->nullable()
                 ->onlyOnIndex()
                 ->format('MMMM DD YYYY, hh:mm a')
             ,
 
-            new Panel(__('lasallesoftwarelibrary::general.panel_system_fields'), $this->systemFields()),
+            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
 
             Uuid::make('uuid'),
         ];

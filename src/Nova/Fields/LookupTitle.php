@@ -35,7 +35,7 @@
 namespace Lasallesoftware\Novabackend\Nova\Fields;
 
 // LaSalle Software class
-use Lasallesoftware\Library\Rules\ValueMustBeUnique;
+use Lasallesoftware\Librarybackend\Rules\ValueMustBeUnique;
 
 /**
  * Class LookupTitle
@@ -58,14 +58,14 @@ class LookupTitle extends BaseTextField
     {
         parent::__construct($name, $attribute, $resolveCallback);
 
-        $this->name = __('lasallesoftwarelibrary::general.field_name_lookup_title');
+        $this->name = __('lasallesoftwarelibrarybackend::general.field_name_lookup_title');
 
         $this->help('<ul>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_lookup_name') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_brief') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_max_255_chars') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_required') .'</li>
-                         <li>'. __('lasallesoftwarelibrary::general.field_help_unique') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_lookup_name') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_brief') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
+                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_unique') .'</li>
                      </ul>'
         );
 
