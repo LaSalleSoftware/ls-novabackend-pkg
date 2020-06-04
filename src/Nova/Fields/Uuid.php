@@ -147,7 +147,7 @@ class Uuid extends BaseTextField
         $uuidComment = "from Lasallesoftware\Novabackend\Nova\Fields\Uuid";
 
         // https://laravel.com/docs/5.8/helpers#method-resolve
-        $uuidGenerator = resolve('Lasallesoftware\Library\UniversallyUniqueIDentifiers\UuidGenerator');
+        $uuidGenerator = resolve('Lasallesoftware\Librarybackend\UniversallyUniqueIDentifiers\UuidGenerator');
 
         return $uuidGenerator->createUuid($lasallesoftware_event_id, $uuidComment, $uuidCreatedby);
     }
