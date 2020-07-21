@@ -46,6 +46,7 @@ use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
@@ -170,24 +171,19 @@ class Personbydomain extends BaseResource
 
             new Panel(__('lasallesoftwarelibrarybackend::general.panel_banned_fields'), $this->bannedFields()),
 
-            BelongsToMany::make(
-                __('lasallesoftwarelibrarybackend::general.resource_label_singular_lookup_roles'),
-                'lookup_role',
-                'Lasallesoftware\Novabackend\Nova\Resources\Lookup_role')
-            ,
+           //new Panel(__('lasallesoftwarelibrarybackend::general.panel_banned_fields'), $this->ownersAndSuperadminsOnlyFields()),
+           new Panel('GO BLUE AND MAIZE!', $this->ownersAndSuperadminsOnlyFields()),
 
-            hasMany::make('Login'),
+            
 
             new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
 
 
             Uuid::make('uuid'),
-
-            //BelongsTo::make('Post')->singularLabel('Post'),
-
         ];
     }
 
+    
     /**
      * Get the persons fields for the resource.
      *
@@ -300,6 +296,29 @@ class Personbydomain extends BaseResource
                 ->hideFromIndex()
             ,
         ];
+    }
+
+    /**
+     * Get fields that are viewable by owners and super admins only
+     *
+     * @return array
+     */
+    protected function ownersAndSuperadminsOnlyFields()
+    {
+
+        if (Personbydomain::find(Auth::id())->IsOwner() || Personbydomain::find(Auth::id())->IsSuperadministrator()) {  
+            return [
+                BelongsToMany::make(
+                    __('lasallesoftwarelibrarybackend::general.resource_label_singular_lookup_roles'),
+                    'lookup_role',
+                    'Lasallesoftware\Novabackend\Nova\Resources\Lookup_role')
+                ,
+
+                HasOne::make('Client'),
+
+                HasMany::make('Login'),
+            ];
+        }
     }
 
     /**

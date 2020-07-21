@@ -95,6 +95,7 @@ class NovabackendServiceProvider extends ServiceProvider
             \Lasallesoftware\Novabackend\Nova\Resources\Social::class,
             \Lasallesoftware\Novabackend\Nova\Resources\Telephone::class,
             \Lasallesoftware\Novabackend\Nova\Resources\Website::class,
+            \Lasallesoftware\Novabackend\Nova\Resources\Client::class,
         ]);
     }
 
