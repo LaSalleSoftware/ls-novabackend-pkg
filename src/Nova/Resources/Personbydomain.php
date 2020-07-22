@@ -170,14 +170,10 @@ class Personbydomain extends BaseResource
             new Panel(__('lasallesoftwarelibrarybackend::general.panel_persons_fields'), $this->personsFields()),
 
             new Panel(__('lasallesoftwarelibrarybackend::general.panel_banned_fields'), $this->bannedFields()),
-
-           //new Panel(__('lasallesoftwarelibrarybackend::general.panel_banned_fields'), $this->ownersAndSuperadminsOnlyFields()),
-           new Panel('GO BLUE AND MAIZE!', $this->ownersAndSuperadminsOnlyFields()),
-
             
+            new Panel('', $this->ownersAndSuperadminsOnlyFields()),
 
             new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
-
 
             Uuid::make('uuid'),
         ];
@@ -305,7 +301,6 @@ class Personbydomain extends BaseResource
      */
     protected function ownersAndSuperadminsOnlyFields()
     {
-
         if (Personbydomain::find(Auth::id())->IsOwner() || Personbydomain::find(Auth::id())->IsSuperadministrator()) {  
             return [
                 BelongsToMany::make(

@@ -37,16 +37,14 @@ namespace Lasallesoftware\Novabackend\Nova\Resources;
 // LaSalle Software classes
 use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain;
 use Lasallesoftware\Novabackend\Nova\Fields\Comments;
-use Lasallesoftware\Novabackend\Nova\Fields\Email as CustomEmail;
-use Lasallesoftware\Novabackend\Nova\Fields\LookupDescription;
 use Lasallesoftware\Novabackend\Nova\Fields\Uuid;
 use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 
@@ -140,13 +138,37 @@ class Client extends BaseResource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('Personbydomain', 'personbydomain', 'Lasallesoftware\Novabackend\Nova\Resources\Personbydomain')
+            BelongsTo::make(
+                __('lasallesoftwarelibrarybackend::general.resource_label_singular_personbydomains'), 
+                'personbydomain', 
+                'Lasallesoftware\Novabackend\Nova\Resources\Personbydomain')
                 ->help('<ul>
                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
                      </ul>'
                 )
                 ->rules('required')
-                ->sortable(),
+                ->sortable()
+            ,
+
+            BelongsTo::make(
+                __('lasallesoftwarelibrarybackend::general.resource_label_singular_companies'), 
+                'company', 
+                'Lasallesoftware\Novabackend\Nova\Resources\Company')
+                ->help('<ul>
+                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
+                     </ul>'
+                )
+                ->nullable()
+            ,
+
+            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_name'))
+                ->help('<ul>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
+                     </ul>'
+                )
+                ->rules('required')
+            ,    
 
             Comments::make('comments'),
 

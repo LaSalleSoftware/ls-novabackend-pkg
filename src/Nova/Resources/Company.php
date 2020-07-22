@@ -44,6 +44,7 @@ use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -179,12 +180,27 @@ class Company extends BaseResource
             BelongsToMany::make('Telephone')->singularLabel('Telephone number'),
             BelongsToMany::make('Website')->singularLabel('Website'),
 
+            new Panel('', $this->ownersAndSuperadminsOnlyFields()),
 
 
             new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
 
             Uuid::make('uuid'),
         ];
+    }
+
+    /**
+     * Get fields that are viewable by owners and super admins only
+     *
+     * @return array
+     */
+    protected function ownersAndSuperadminsOnlyFields()
+    {
+        if (Personbydomain::find(Auth::id())->IsOwner() || Personbydomain::find(Auth::id())->IsSuperadministrator()) {  
+            return [
+                HasOne::make('Client'),
+            ];
+        }
     }
 
     /**
