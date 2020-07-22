@@ -75,7 +75,7 @@ class Client extends BaseResource
      *
      * @var string
      */
-    public static $group = 'Auth';
+    public static $group = 'Profiles';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -90,7 +90,7 @@ class Client extends BaseResource
      * @var array
      */
     public static $search = [
-        'id', 'email_address',
+        'id', 'name',
     ];
 
 
