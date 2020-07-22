@@ -69,7 +69,7 @@ class Client extends BaseResource
      *
      * @var string
      */
-    public static $model = 'Lasallesoftware\\Librarybackend\\Authentication\\Models\\Client';
+    public static $model = 'Lasallesoftware\\Librarybackend\\Profiles\\Models\\Client';
 
 
     /**
