@@ -138,16 +138,14 @@ class Client extends BaseResource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make(
-                __('lasallesoftwarelibrarybackend::general.resource_label_singular_personbydomains'), 
-                'personbydomain', 
-                'Lasallesoftware\Novabackend\Nova\Resources\Personbydomain')
+            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_name'))
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_clients_preamble') .'</li>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
                      </ul>'
                 )
                 ->rules('required')
-                ->sortable()
             ,
 
             BelongsTo::make(
@@ -155,22 +153,22 @@ class Client extends BaseResource
                 'company', 
                 'Lasallesoftware\Novabackend\Nova\Resources\Company')
                 ->help('<ul>
-                           <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_client_company') .'</li>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->nullable()
             ,
 
-            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_name'))
-                ->help('<ul>
-                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
-                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
+            Comments::make('comments')
+                    ->help('<ul>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_client_company') .'</li>
+                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
-                ->rules('required')
-            ,    
-
-            Comments::make('comments'),
+                ->nullable()
+                ->hideFromIndex()
+            ,
 
 
             new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
