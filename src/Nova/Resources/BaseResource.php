@@ -46,6 +46,10 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Resource;
 
+// Laravel facade
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 /**
  * Class BaseResource
@@ -136,5 +140,26 @@ abstract class BaseResource extends Resource
 
         // The path must not have a trailing slash
         return (substr($path, -1) == '/') ? substr($path, 0, -1) : $path;
+    }
+
+    /**
+     * Get the "client_id" field of the "personbydomain_client" db table, given the 
+     * "personbydomain_id" via the Auth() facade. 
+     * 
+     * Created for the pocast related Nova resources "public static function indexQuery(NovaRequest $request, $query)"
+     * method can call this common static function. 
+     * 
+     * If a user belongs to the "Client" role, then they can see only podcast records belonging to their "client_id". Hence,
+     * this method!
+     *
+     * @return int    
+     */
+    public static function getClientId()
+    {
+        return DB::table('personbydomain_client')
+            ->where('personbydomain_id', Auth::id())
+            ->pluck('client_id')
+            ->first()
+        ;
     }
 }
