@@ -136,64 +136,51 @@ class Client extends BaseResource
      */
     public function fields(Request $request)
     {
-        return [
-            new Panel('', $this->ownersOnlyFields()),
-        ];
-    }
-
-    /**
-     * Get fields that are viewable by owners only
-     *
-     * @return array
-     */
-    protected function ownersOnlyFields()
-    {
-        if (Personbydomain::find(Auth::id())->IsOwner()) {  
+        if (Personbydomain::find(Auth::id())->IsOwner()) { 
             return [
 
-            ID::make()->sortable(),
+                ID::make()->sortable(),
 
-            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_name'))
-                ->help('<ul>
-                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_clients_preamble') .'</li>
-                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
-                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
-                     </ul>'
-                )
-                ->rules('required')
-            ,
-
-            BelongsTo::make(
-                __('lasallesoftwarelibrarybackend::general.resource_label_singular_companies'), 
-                'company', 
-                'Lasallesoftware\Novabackend\Nova\Resources\Company')
-                ->help('<ul>
-                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_client_company') .'</li>
-                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
-                     </ul>'
-                )
-                ->nullable()
-            ,
-
-            Comments::make('comments')
+                Text::make(__('lasallesoftwarelibrarybackend::general.field_name_name'))
                     ->help('<ul>
-                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_client_company') .'</li>
-                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
-                     </ul>'
-                )
-                ->nullable()
-                ->hideFromIndex()
-            ,
+                                <li>'. __('lasallesoftwarelibrarybackend::general.field_help_clients_preamble') .'</li>
+                                <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                                <li>'. __('lasallesoftwarelibrarybackend::general.field_help_required') .'</li>
+                        </ul>'
+                    )
+                    ->rules('required')
+                ,
 
-            BelongsToMany::make('Personbydomain'),
+                BelongsTo::make(
+                    __('lasallesoftwarelibrarybackend::general.resource_label_singular_companies'), 
+                    'company', 
+                    'Lasallesoftware\Novabackend\Nova\Resources\Company')
+                    ->help('<ul>
+                                <li>'. __('lasallesoftwarelibrarybackend::general.field_help_client_company') .'</li>
+                                <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
+                        </ul>'
+                    )
+                    ->nullable()
+                ,
 
-            new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
+                Comments::make('comments')
+                        ->help('<ul>
+                                <li>'. __('lasallesoftwarelibrarybackend::general.field_help_client_company') .'</li>
+                                <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
+                        </ul>'
+                    )
+                    ->nullable()
+                    ->hideFromIndex()
+                ,
 
-            Uuid::make('uuid'),
+                BelongsToMany::make('Personbydomain'),
+
+                new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
+
+                Uuid::make('uuid'),
             ];
-        }
+        }        
     }
-
 
 
     /**
