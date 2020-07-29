@@ -42,6 +42,7 @@ use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 
 // Laravel Nova classes
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -136,6 +137,20 @@ class Client extends BaseResource
     public function fields(Request $request)
     {
         return [
+            new Panel('', $this->ownersOnlyFields()),
+        ];
+    }
+
+    /**
+     * Get fields that are viewable by owners only
+     *
+     * @return array
+     */
+    protected function ownersOnlyFields()
+    {
+        if (Personbydomain::find(Auth::id())->IsOwner()) {  
+            return [
+
             ID::make()->sortable(),
 
             Text::make(__('lasallesoftwarelibrarybackend::general.field_name_name'))
@@ -170,12 +185,16 @@ class Client extends BaseResource
                 ->hideFromIndex()
             ,
 
+            BelongsToMany::make('Personbydomain'),
 
             new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
 
             Uuid::make('uuid'),
-        ];
+            ];
+        }
     }
+
+
 
     /**
      * Get the cards available for the request.

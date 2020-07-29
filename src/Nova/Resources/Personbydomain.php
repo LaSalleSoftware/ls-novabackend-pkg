@@ -170,6 +170,8 @@ class Personbydomain extends BaseResource
             new Panel(__('lasallesoftwarelibrarybackend::general.panel_persons_fields'), $this->personsFields()),
 
             new Panel(__('lasallesoftwarelibrarybackend::general.panel_banned_fields'), $this->bannedFields()),
+
+            new Panel('', $this->ownersOnlyFields()),
             
             new Panel('', $this->ownersAndSuperadminsOnlyFields()),
 
@@ -295,6 +297,20 @@ class Personbydomain extends BaseResource
     }
 
     /**
+     * Get fields that are viewable by owners only
+     *
+     * @return array
+     */
+    protected function ownersOnlyFields()
+    {
+        if (Personbydomain::find(Auth::id())->IsOwner()) {  
+            return [
+                BelongsToMany::make('Client'),
+            ];
+        }
+    }
+
+    /**
      * Get fields that are viewable by owners and super admins only
      *
      * @return array
@@ -309,7 +325,7 @@ class Personbydomain extends BaseResource
                     'Lasallesoftware\Novabackend\Nova\Resources\Lookup_role')
                 ,
 
-                HasOne::make('Client'),
+                BelongsToMany::make('Client'),
 
                 HasMany::make('Login'),
             ];
