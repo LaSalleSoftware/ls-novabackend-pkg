@@ -35,6 +35,7 @@
 namespace Lasallesoftware\Novabackend\Nova\Resources;
 
 // LaSalle Software classes
+use Lasallesoftware\Librarybackend\Authentication\Models\Personbydomain;
 use Lasallesoftware\Novabackend\Nova\Fields\CreatedAt;
 use Lasallesoftware\Novabackend\Nova\Fields\CreatedBy;
 use Lasallesoftware\Novabackend\Nova\Fields\UpdatedAt;
@@ -161,5 +162,24 @@ abstract class BaseResource extends Resource
             ->pluck('client_id')
             ->first()
         ;
+    }
+
+    /**
+     * Permission for a user with a client role
+     *
+     * @param  int   $personbydomain_id            The personbydomain ID
+     * @return bool
+     */
+    public static function getNavigationPermissionForClient($personbydomain_id)
+    {
+        // Owner sees everything!
+        if (Personbydomain::find($personbydomain_id)->IsOwner()) return true;
+
+        // A user with a client user role, *and* has is associated with a client database table record is a thumbs up
+        if ( (Personbydomain::find($personbydomain_id)->IsClient()) && (Personbydomain::find($personbydomain_id)->getClientId($personbydomain_id) > 0) ) {
+            return true;
+        }
+
+        return false;
     }
 }
