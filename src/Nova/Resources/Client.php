@@ -94,6 +94,8 @@ class Client extends BaseResource
         'id', 'name',
     ];
 
+    public static $priority = 430;
+
 
     /**
      * Determine if this resource is available for navigation.

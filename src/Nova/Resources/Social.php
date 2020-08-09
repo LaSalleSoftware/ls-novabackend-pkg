@@ -94,6 +94,8 @@ class Social extends BaseResource
         'id', 'url',
     ];
 
+    public static $priority = 470;
+
 
     /**
      * Determine if this resource is available for navigation.

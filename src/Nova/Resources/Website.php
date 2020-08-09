@@ -94,6 +94,8 @@ class Website extends BaseResource
         'id','url',
     ];
 
+    public static $priority = 490;
+
 
     /**
      * Determine if this resource is available for navigation.

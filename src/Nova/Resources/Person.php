@@ -98,6 +98,8 @@ class Person extends BaseResource
         'id', 'name_calculated', 'first_name', 'surname',
     ];
 
+    public static $priority = 460;
+
 
     /**
      * Determine if this resource is available for navigation.

@@ -99,6 +99,8 @@ class Address extends BaseResource
         'id', 'address_calculated',
     ];
 
+    public static $priority = 420;
+
 
     /**
      * Determine if this resource is available for navigation.

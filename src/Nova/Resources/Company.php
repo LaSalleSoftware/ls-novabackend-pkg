@@ -95,6 +95,8 @@ class Company extends BaseResource
         'id', 'name',
     ];
 
+    public static $priority = 440;
+
 
     /**
      * Determine if this resource is available for navigation.

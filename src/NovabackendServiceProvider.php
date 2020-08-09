@@ -97,6 +97,11 @@ class NovabackendServiceProvider extends ServiceProvider
             \Lasallesoftware\Novabackend\Nova\Resources\Website::class,
             \Lasallesoftware\Novabackend\Nova\Resources\Client::class,
         ]);
+
+        // In NovaServiceProvider.php
+        Nova::sortResourcesBy(function ($resource) {
+            return $resource::$priority ?? 9999;
+        });
     }
 
 

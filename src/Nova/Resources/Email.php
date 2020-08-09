@@ -94,6 +94,8 @@ class Email extends BaseResource
         'id', 'email_address',
     ];
 
+    public static $priority = 450;
+
 
     /**
      * Determine if this resource is available for navigation.

@@ -96,6 +96,8 @@ class Telephone extends BaseResource
         'id', 'telephone_calculated',
     ];
 
+    public static $priority = 480;
+
 
     /**
      * Determine if this resource is available for navigation.
