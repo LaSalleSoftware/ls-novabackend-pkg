@@ -1,6 +1,9 @@
 # CHANGE LOG
 
-## VERSION 2.4.1 (coming!)
+## VERSION 2.4.2 (coming!)
+
+## VERSION 2.4.1 (August 08, 2020)
+* [v2.4.1 issues](https://github.com/LaSalleSoftware/ls-novabackend-pkg/milestone/13?closed=1)
 
 ## VERSION 2.4.0 (August 07, 2020)
 * [v2.4.0 issues](https://github.com/LaSalleSoftware/ls-novabackend-pkg/milestone/12?closed=1)
