@@ -66,6 +66,8 @@ class Title extends BaseTextField
 
         $this->sanitize();
 
+        $this->formatTheValueForTheFormWeAreOn($this->identifyForm());
+
         $this->specifyShowOnForms();
 
         $this->sortable();
@@ -98,5 +100,46 @@ class Title extends BaseTextField
         return $this->resolveCallback = function ($value) {
             return trim(ucwords($value));
         };
+    }
+
+    /**
+     * Format this field for the individual forms,
+     *
+     * @param string  $formType  The form being displayed.
+     *                           From Lasallesoftware\Novabackend\Nova\Fields->identifyForm()
+     * @return \Closure
+     */
+    private function formatTheValueForTheFormWeAreOn($formType)
+    {
+        // if we are on the index form
+        if ($formType == "index") {
+
+            return $this->resolveCallback = function ($value) {
+
+                return (strlen($value) < 51) ? $value : substr($value, 0, 50) . '...';
+            };
+
+        }
+
+        // if we are creating a new record
+        if  ($formType == "creation") {
+
+            // not applicable
+
+        }
+
+        // if we are on the detail (show) form
+        if ($formType == "detail") {
+
+            // not applicable
+
+        }
+
+        // if we are on the update (edit) form
+        if ($formType == "update") {
+
+            // not applicable
+
+        }
     }
 }
