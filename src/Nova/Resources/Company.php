@@ -48,6 +48,7 @@ use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
 
@@ -156,13 +157,14 @@ class Company extends BaseResource
 
             Comments::make('comments'),
 
-            Text::make( __('lasallesoftwarelibrarybackend::general.field_name_profile'))
+            Trix::make( __('lasallesoftwarelibrarybackend::general.field_name_profile'))
                 ->help('<ul>
                          <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
                 )
                 ->hideFromIndex(),
 
+        /*        
             Image::make( __('lasallesoftwarelibrarybackend::general.field_name_featured_image'))
                 ->disk(config('lasallesoftware-library.lasalle_filesystem_disk_where_images_are_stored'))
                 ->disableDownload()
@@ -172,6 +174,15 @@ class Company extends BaseResource
                 )
                 ->squared('true')
                 ->path(config('lasallesoftware-library.image_path_for_company_nova_resource')),
+        */      
+        
+            Text::make(__('lasallesoftwarelibrarybackend::general.field_name_featured_image'), 'featured_image' )
+                ->help('<ul>
+                        <li>'. __('lasallesoftwarelibrarybackend::general.field_help_max_255_chars') .'</li>
+                        <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
+                     </ul>'
+                )
+                ->hideFromIndex(), 
 
 
 
