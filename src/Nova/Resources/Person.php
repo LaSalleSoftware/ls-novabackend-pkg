@@ -45,8 +45,10 @@ use Lasallesoftware\Novabackend\Nova\Resources\BaseResource;
 use Lasallesoftware\Librarybackend\Rules\PersonsUniqueRule;
 
 // Laravel Nova classes
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasOne;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\ID;
@@ -255,6 +257,11 @@ class Person extends BaseResource
 
 
             hasOne::make('Personbydomain'),
+            
+
+            // https://nova.laravel.com/docs/4.0/resources/relationships.html#belongsto
+            hasMany::make('Podcast Guest Status', 'podcast_guest_status', 'Lasallesoftware\Podcastguestmanagementnovabackend\Nova\Resources\Podcast_guest_status'),
+
 
             BelongsToMany::make('Company')->singularLabel('Company'),
             BelongsToMany::make('Address')->singularLabel('Address'),
