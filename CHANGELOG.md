@@ -1,6 +1,7 @@
 # CHANGE LOG
 
-## VERSION 2.5.2 (coming!)
+## VERSION 3.0 (April 03, 2024)
+* [v3.0 issues](https://github.com/LaSalleSoftware/ls-novabackend-pkg/milestone/22?closed=1)
 
 ## VERSION 2.5.1 (November 21, 2022)
 * [v2.5.1 issues](https://github.com/LaSalleSoftware/ls-novabackend-pkg/milestone/21?closed=1)
