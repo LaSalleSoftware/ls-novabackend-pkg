@@ -123,7 +123,7 @@ class Personbydomain extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
@@ -148,7 +148,7 @@ class Personbydomain extends BaseResource
             DateTime::make(__('lasallesoftwarelibrarybackend::general.field_name_email_verified_at'), 'email_verified_at')
                 ->nullable()
                 ->onlyOnDetail()
-                ->format('MMMM DD YYYY, hh:mm a')
+                // ->format('MMMM DD YYYY, hh:mm a')
             ,
 
             Password::make(__('lasallesoftwarelibrarybackend::general.field_name_password'), 'password')
@@ -278,7 +278,7 @@ class Personbydomain extends BaseResource
             DateTime::make(__('lasallesoftwarelibrarybackend::general.field_name_banned_date'), 'banned_at')
                 ->nullable()
                 ->onlyOnDetail()
-                ->format('MMMM DD YYYY, hh:mm a')
+                // ->format('MMMM DD YYYY, hh:mm a')
                 ->help('<ul>
                         <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                     </ul>'
@@ -338,7 +338,7 @@ class Personbydomain extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function cards(Request $request)
+    public function cards(NovaRequest $request)
     {
         return [];
     }
@@ -349,7 +349,7 @@ class Personbydomain extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function filters(Request $request)
+    public function filters(NovaRequest $request)
     {
         return [];
     }
@@ -360,7 +360,7 @@ class Personbydomain extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function lenses(Request $request)
+    public function lenses(NovaRequest $request)
     {
         return [];
     }
@@ -371,7 +371,7 @@ class Personbydomain extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
         return [];
     }

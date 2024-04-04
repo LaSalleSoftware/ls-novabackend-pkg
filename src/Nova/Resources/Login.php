@@ -129,7 +129,7 @@ class Login extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
@@ -145,7 +145,7 @@ class Login extends BaseResource
             DateTime::make(__('lasallesoftwarelibrarybackend::general.field_name_updated_at'), 'updated_at')
                 ->nullable()
                 ->onlyOnIndex()
-                ->format('MMMM DD YYYY, hh:mm a')
+                // ->format('MMMM DD YYYY, hh:mm a')
             ,
 
             new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
@@ -160,7 +160,7 @@ class Login extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function cards(Request $request)
+    public function cards(NovaRequest $request)
     {
         return [];
     }
@@ -171,7 +171,7 @@ class Login extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function filters(Request $request)
+    public function filters(NovaRequest $request)
     {
         return [];
     }
@@ -182,7 +182,7 @@ class Login extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function lenses(Request $request)
+    public function lenses(NovaRequest $request)
     {
         return [];
     }
@@ -193,7 +193,7 @@ class Login extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
         return [];
     }

@@ -141,7 +141,7 @@ class Address extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
@@ -160,8 +160,7 @@ class Address extends BaseResource
                 ->sortable()
                 ->onlyOnIndex(),
 
-            Place::make('Address', 'address_line_1')
-                ->state('province')
+            Text::make('Address', 'address_line_1')
                 ->sortable()
                 ->hideFromIndex()
                 ->help('<ul>
@@ -206,7 +205,7 @@ class Address extends BaseResource
                 )
                 ->hideFromIndex(),
 
-            Country::make('Country')
+            Text::make('Country')
                 ->help('<ul>
                            <li>'. __('lasallesoftwarelibrarybackend::general.field_help_optional') .'</li>
                      </ul>'
@@ -281,7 +280,7 @@ class Address extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function cards(Request $request)
+    public function cards(NovaRequest $request)
     {
         return [];
     }
@@ -292,7 +291,7 @@ class Address extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function filters(Request $request)
+    public function filters(NovaRequest $request)
     {
         return [];
     }
@@ -303,7 +302,7 @@ class Address extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function lenses(Request $request)
+    public function lenses(NovaRequest $request)
     {
         return [];
     }
@@ -314,7 +313,7 @@ class Address extends BaseResource
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
         return [];
     }
