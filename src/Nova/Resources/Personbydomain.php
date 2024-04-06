@@ -171,9 +171,9 @@ class Personbydomain extends BaseResource
 
             new Panel(__('lasallesoftwarelibrarybackend::general.panel_banned_fields'), $this->bannedFields()),
 
-            new Panel('', $this->ownersOnlyFields()),
+            new Panel('Owner Only Fields', $this->ownersOnlyFields()),
             
-            new Panel('', $this->ownersAndSuperadminsOnlyFields()),
+            new Panel('Owner and Superadmin Only Fields', $this->ownersAndSuperadminsOnlyFields()),
 
             new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
 

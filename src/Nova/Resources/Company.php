@@ -193,7 +193,7 @@ class Company extends BaseResource
             BelongsToMany::make('Telephone')->singularLabel('Telephone number'),
             BelongsToMany::make('Website')->singularLabel('Website'),
 
-            new Panel('', $this->ownersAndSuperadminsOnlyFields()),
+            new Panel('Owner Only Fields', $this->ownersAndSuperadminsOnlyFields()),
 
 
             new Panel(__('lasallesoftwarelibrarybackend::general.panel_system_fields'), $this->systemFields()),
