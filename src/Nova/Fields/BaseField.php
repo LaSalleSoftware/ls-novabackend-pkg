@@ -49,6 +49,17 @@ use Laravel\Nova\Fields\Field;
  */
 class BaseField extends Field
 {
+    
+    // Putting this method here because I need it! 
+    // They decided to remove this method in Nova/Fields/Fields.php in Nova v5
+    public function setReadonlyAttribute()
+    {
+        $this->withMeta(['extraAttributes' => ['readonly' => true]]);
+
+        return $this;
+    }
+
+    
     /**
      * The edit form url ends with "../{resourceName}/{resourceId}/update-fields".
      * So, to check if we are on the edit form, check if the URL ends with "update-fields".
