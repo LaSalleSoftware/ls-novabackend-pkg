@@ -1,5 +1,8 @@
 # CHANGE LOG
 
+## VERSION 3.3 (January 29, 2025)
+* [v3.3 issues](https://github.com/LaSalleSoftware/ls-novabackend-pkg/milestone/25?closed=1)
+
 ## VERSION 3.2 (December 18, 2024)
 * [v3.2 issues](https://github.com/LaSalleSoftware/ls-novabackend-pkg/milestone/24?closed=1)
 
