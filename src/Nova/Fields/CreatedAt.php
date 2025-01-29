@@ -125,6 +125,16 @@ class CreatedAt extends BaseTextField
         if ($formType == "update") {
 
             return $this->resolveCallback = function ($value) {
+                // issue #75
+                // Getting an error because, all of a sudden, getting null values in my ../Resources/Person.php.
+                // This is in ../Fields/CreatedAt.php.
+                // Never got this null shit value before, but, y'know I updated to the new Nova full release 
+                // (from v4 to v5, or whatever), and of course crap like this happens. Another problem came up
+                // due solely from the Nova upgrade, see milestone #3.2
+                if (! isset($value)) {
+                    return;
+                }
+
                 if (($timestamp = strtotime($value)) === false) {
                     return $value->format('Y-m-d H:i:s');
                 }
