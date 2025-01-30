@@ -256,12 +256,12 @@ class Person extends BaseResource
                 ->hideFromIndex(),
 
 
-            hasOne::make('Personbydomain'),
+            hasOne::make('Personbydomain')
+                ->hideWhenUpdating()
+            ,
             
-
             // https://nova.laravel.com/docs/4.0/resources/relationships.html#belongsto
             hasMany::make('Podcast Guest Status', 'podcast_guest_status', 'Lasallesoftware\Podcastguestmanagementnovabackend\Nova\Resources\Podcast_guest_status'),
-
 
             BelongsToMany::make('Company')->singularLabel('Company'),
             BelongsToMany::make('Address')->singularLabel('Address'),

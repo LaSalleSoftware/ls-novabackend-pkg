@@ -35,51 +35,73 @@
 namespace Lasallesoftware\Novabackend\Nova\Fields;
 
 // LaSalle Software class
-use Lasallesoftware\Novabackend\Nova\Fields\BaseTextField;
+use Lasallesoftware\Novabackend\Nova\Fields\BaseField;
 
-// Laravel facades
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-
+use Exception;
+use DateTimeInterface;
 
 /**
- * Class CreatedBy
+ * Class CustomDate
  *
- * Although the actual created_by field is of type number (the mysql field type is INT), Nova offers features specific
- * to the text type, that are not available with the number field type. So, I am using the text field type.
+ * The Nova Date class with customizations for display formats
  *
  * @package Lasallesoftware\Novabackend\Nova\Fields
  */
-class CreatedBy extends BaseTextField
+class CustomDate_ORIGINAL extends BaseField
 {
     /**
-     * The field's vue component.
+     * The field's component.
      *
      * @var string
      */
-    public $component = 'text-field';
+    public $component = 'date';
 
     /**
-     * Create a new custom text field for created_by.
+     * Create a new field.
      *
-     * @param  string $name
-     * @param  string|null $attribute
-     * @param  mixed|null $resolveCallback
+     * @param  string  $name
+     * @param  string|null  $attribute
+     * @param  mixed|null  $resolveCallback
      * @return void
      */
     public function __construct($name, $attribute = null, $resolveCallback = null)
     {
-        parent::__construct($name, $attribute, $resolveCallback);
 
-        $this->name = __('lasallesoftwarelibrarybackend::general.field_name_created_by');
+        parent::__construct($name, $attribute, $resolveCallback ?? function ($value) {
 
-        $this->withMeta(['type' => 'number']);
+                if (! $value instanceof DateTimeInterface) {
+                    throw new Exception(__('lasallesoftwarelibrarybackend::general.exception_message_date_cast'));
+                }
+            }
+        );
 
         $this->formatTheValueForTheFormWeAreOn($this->identifyForm());
 
         $this->specifyShowOnForms();
 
-        $this->setReadOnlyAttribute(true);
+        $this->withMeta(['placeholder' => $attribute ?? __('lasallesoftwarelibrarybackend::general.not_specified')]);
+    }
+
+    /**
+     * Set the first day of the week.
+     *
+     * @param  int  $day
+     * @return $this
+     */
+    public function firstDayOfWeek($day)
+    {
+        return $this->withMeta([__FUNCTION__ => $day]);
+    }
+
+    /**
+     * Set the date format (Moment.js) that should be used to display the date.
+     *
+     * @param  string  $format
+     * @return $this
+     */
+    public function format($format)
+    {
+        return $this->withMeta([__FUNCTION__ => $format]);
     }
 
     /**
@@ -110,7 +132,11 @@ class CreatedBy extends BaseTextField
         if ($formType == "index") {
 
             return $this->resolveCallback = function ($value) {
-                return $value;
+
+                if (! isset($value)) {
+                    return "—";
+                }
+                return $value->format('l F dS, Y');
             };
 
         }
@@ -118,33 +144,25 @@ class CreatedBy extends BaseTextField
         // if we are creating a new record
         if  ($formType == "creation") {
 
-            return $this->withMeta([
-                "value" => Auth::id()
-            ]);
+            return $this->resolveCallback = function ($value) {
+
+                if (! isset($value)) {
+                    return "";
+                }
+                return $value->format('Y-m-d');
+            };
 
         }
 
         // if we are on the detail (show) form
         if ($formType == "detail") {
 
-
-            // issue #79
-            // Getting an error because, all of a sudden, getting null values in my ../Resources/Person.php.
-            // This is in ../Fields/CreateByt.php.
-            // Never got this null shit value before, but, y'know I updated to the new Nova full release 
-            // (from v4 to v5, or whatever), and of course crap like this happens. Another problem came up
-            // due solely from the Nova upgrade, see milestone #3.4
-            if (! isset($value)) {
-                return 1;  // JUST RETURN ME!
-            }
-
             return $this->resolveCallback = function ($value) {
 
-                $user = DB::table('personbydomains')->where('id', $value )->first();
-                return $user->person_first_name
-                    . ' ' .  $user->person_surname
-                    . ' (' . $value . ')'
-                 ;
+                if (! isset($value)) {
+                    return "—";
+                }
+                return $value->format('l F dS, Y');
             };
 
         }
@@ -153,9 +171,12 @@ class CreatedBy extends BaseTextField
         if ($formType == "update") {
 
             return $this->resolveCallback = function ($value) {
-                return $value;
+                
+                if (! isset($value)) {
+                    return "";
+                }
+                return $value->format('Y-m-d');
             };
-
         }
     }
 }
