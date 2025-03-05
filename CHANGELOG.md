@@ -1,5 +1,8 @@
 # CHANGE LOG
 
+## VERSION 3.4.1 (Narcg 05, 2025)
+* [v3.4.1 issues](https://github.com/LaSalleSoftware/ls-novabackend-pkg/milestone/27?closed=1)
+
 ## VERSION 3.4 (January 29, 2025)
 * [v3.4 issues](https://github.com/LaSalleSoftware/ls-novabackend-pkg/milestone/26?closed=1)
 
