@@ -326,8 +326,6 @@ class Personbydomain extends BaseResource
                 ,
 
                 BelongsToMany::make('Client'),
-
-                HasMany::make('Login'),
             ];
         }
     }
